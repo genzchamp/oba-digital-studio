@@ -1,71 +1,33 @@
-const WHATSAPP='2348123958585';
-const EMAIL='genzchamp01@gmail.com';
+const WA='2348123958585';
+const wa=(message)=>`https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
+const toast=document.getElementById('toast');
+function showToast(){toast.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>toast.classList.remove('show'),4500)}
 
-const menu=document.querySelector('.menu-btn');
-const links=document.querySelector('.nav-links');
-if(menu){
-  menu.addEventListener('click',()=>{
-    const open=links.classList.toggle('open');
-    menu.setAttribute('aria-expanded',open);
-  });
-  links?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    links.classList.remove('open');
-    menu.setAttribute('aria-expanded','false');
-  }));
-}
-
-const products={
-  'Premium Website Template':{description:'A polished, responsive business website foundation for a company that wants to look established without starting from zero.',items:['Premium mobile-first layout','Responsive desktop design','Hero, services, work and CTA sections','Clean HTML + CSS + JavaScript structure','Basic customization of business details'],price:'From ₦30,000'},
-  'Business Social Starter Pack':{description:'A ready-to-use content system for businesses that need to start posting consistently and professionally.',items:['10 promotional design concepts','10 caption ideas','10 content ideas','Story / status-ready formats','Niche-specific customization available'],price:'₦5,000'},
-  'Business Launch Kit':{description:'Our starter bundle for a business that needs a stronger digital presence across its website, brand and social channels.',items:['Premium business website template','Logo / brand starter direction','Social media starter system','Launch-ready content structure','Customization and setup available'],price:'From ₦50,000'}
-};
-
-const modal=document.querySelector('#productModal');
-const modalTitle=document.querySelector('#modalTitle');
-const modalDescription=document.querySelector('#modalDescription');
-const modalList=document.querySelector('#modalList');
-const modalPrice=document.querySelector('#modalPrice');
-const modalWhatsApp=document.querySelector('#modalWhatsApp');
-const modalEmail=document.querySelector('#modalEmail');
-const contactBtn=document.querySelector('#contactBtn');
-const whatsappBtn=document.querySelector('#whatsappBtn');
-
-function waLink(message){return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`}
-function emailLink(subject,body=''){return `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}${body?`&body=${encodeURIComponent(body)}`:''}`}
-
-function openProduct(name){
-  const product=products[name];
-  if(!product||!modal)return;
-  const message=`Hello OBA Digital Studio 👋\n\nI would like to order: ${name}\n\nPlease send me the next steps for payment and delivery.`;
-  modalTitle.textContent=name;
-  modalDescription.textContent=product.description;
-  modalList.innerHTML=product.items.map(item=>`<li>${item}</li>`).join('');
-  modalPrice.textContent=product.price;
-  modalWhatsApp.href=waLink(message);
-  modalEmail.href=emailLink(`Order: ${name}`,`Hello OBA Digital Studio,\n\nI would like to order: ${name}\n\nPlease send me the next steps for payment and delivery.`);
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden','false');
-  document.body.classList.add('modal-open');
-}
-function closeProduct(){
-  if(!modal)return;
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden','true');
-  document.body.classList.remove('modal-open');
-}
-
-document.querySelectorAll('.product').forEach(card=>card.querySelector('.product-click')?.addEventListener('click',()=>openProduct(card.dataset.product)));
-document.querySelectorAll('[data-close-modal]').forEach(el=>el.addEventListener('click',closeProduct));
-document.addEventListener('keydown',event=>{if(event.key==='Escape')closeProduct()});
-
-if(whatsappBtn) whatsappBtn.href=waLink('Hello OBA Digital Studio 👋\n\nI would like to discuss a project for my business. Please send me the next steps.');
-if(contactBtn) contactBtn.href=emailLink('OBA Digital Studio Project Request','Hello OBA Digital Studio,\n\nI would like to discuss a project for my business.\n\nPlease send me the next steps.');
+document.querySelectorAll('.buy').forEach(btn=>btn.addEventListener('click',()=>{
+  const product=btn.dataset.product;
+  showToast();
+  // This placeholder intentionally does not invent a Selar checkout URL.
+  // Replace this handler with the product's exact Selar URL when each listing is published.
+}));
 
 document.querySelectorAll('[data-service]').forEach(link=>link.addEventListener('click',()=>{
   const service=link.dataset.service;
-  if(contactBtn) contactBtn.href=emailLink(`${service} project enquiry`,`Hello OBA Digital Studio,\n\nI am interested in your ${service} service.\n\nPlease send me the next steps.`);
-  if(whatsappBtn) whatsappBtn.href=waLink(`Hello OBA Digital Studio 👋\n\nI am interested in your ${service} service.\n\nPlease send me the next steps.`);
+  const message=`Hi OBA Digital Studio, I'm interested in ${service}. I'd like to discuss my project and get the available options.`;
+  link.href=wa(message);
+  link.target='_blank';
 }));
 
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const mainWA=document.getElementById('wa');
+if(mainWA) mainWA.href=wa("Hi OBA Digital Studio, I'd like to discuss a digital project. I need help choosing the right product or service for my business.");
+
+const menu=document.querySelector('.menu');
+const nav=document.querySelector('.nav nav');
+if(menu) menu.addEventListener('click',()=>{
+  nav.classList.toggle('open');
+  menu.setAttribute('aria-expanded',nav.classList.contains('open'));
+});
+document.querySelectorAll('.nav nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});
+document.querySelectorAll('.product,.work-card,.service-list a,.step,.why-grid>div,.hero-copy,.hero-visual').forEach(el=>{el.style.transition='opacity .7s ease,transform .7s ease';el.style.opacity='0';el.style.transform='translateY(18px)';observer.observe(el)});
+const style=document.createElement('style');style.textContent='.in{opacity:1!important;transform:none!important}.nav nav.open{display:flex;position:absolute;top:68px;left:0;right:0;background:#f5f5f0;padding:20px 4%;flex-direction:column;border-bottom:1px solid #ddd}.nav nav.open a{font-size:16px;padding:8px 0}';document.head.appendChild(style);
