@@ -1,74 +1,31 @@
 /* OBA Digital Studio — homepage polish */
 
-/* Mobile navigation: the JS already toggles .open; this supplies the missing visual state. */
 @media (max-width: 800px){
   .nav{position:sticky;top:0;z-index:50}
-  .nav nav.open{
-    display:flex;
-    position:absolute;
-    top:76px;
-    left:0;
-    right:0;
-    padding:18px 4% 22px;
-    flex-direction:column;
-    align-items:stretch;
-    gap:0;
-    background:rgba(244,243,238,.98);
-    backdrop-filter:blur(24px);
-    border-bottom:1px solid rgba(16,18,17,.12);
-    box-shadow:0 18px 40px rgba(0,0,0,.08);
-  }
-  .nav nav.open a{
-    display:block;
-    padding:14px 0;
-    font-size:14px;
-    border-bottom:1px solid rgba(16,18,17,.08);
-  }
+  .nav nav.open{display:flex;position:absolute;top:76px;left:0;right:0;padding:18px 4% 22px;flex-direction:column;align-items:stretch;gap:0;background:rgba(244,243,238,.98);backdrop-filter:blur(24px);border-bottom:1px solid rgba(16,18,17,.12);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+  .nav nav.open a{display:block;padding:14px 0;font-size:14px;border-bottom:1px solid rgba(16,18,17,.08)}
   .nav nav.open a:last-child{border-bottom:0}
   .menu{position:relative;z-index:51;width:42px;height:42px;border:1px solid #101211;border-radius:50%;display:grid;place-items:center;font-size:20px;line-height:1}
 }
 
-/* Product artwork: replace the generic pastel-card feel with six distinct editorial mini-scenes. */
-.market-grid .product{border-radius:26px;box-shadow:0 12px 35px rgba(16,18,17,.07)}
-.market-grid .product:hover{box-shadow:0 28px 70px rgba(16,18,17,.15)}
-.market-grid .art{isolation:isolate;border-bottom:1px solid rgba(16,18,17,.08);padding:22px}
-.market-grid .art:before{width:250px;height:250px;right:-95px;top:-105px;background:rgba(255,255,255,.16);box-shadow:0 0 0 1px rgba(16,18,17,.08),0 0 0 34px rgba(255,255,255,.06),0 0 0 70px rgba(255,255,255,.035)}
-.market-grid .art:after{width:175px;height:108px;right:24px;bottom:24px;border-radius:18px;background:rgba(255,255,255,.12);border:1px solid rgba(16,18,17,.16);box-shadow:0 18px 40px rgba(16,18,17,.12);backdrop-filter:blur(8px)}
-.market-grid .art span{font-size:9px;letter-spacing:2px;opacity:.72}
-.market-grid .art strong{font-size:35px;letter-spacing:-2.8px;line-height:.84}
-.market-grid .art small{font-size:10px;letter-spacing:.15px;opacity:.78}
+/* Premium product previews — each card now shows the kind of asset the buyer is actually getting. */
+.market-grid .product{border-radius:26px;overflow:hidden;box-shadow:0 12px 35px rgba(16,18,17,.07);transition:transform .35s ease,box-shadow .35s ease}
+.market-grid .product:hover{transform:translateY(-6px);box-shadow:0 28px 70px rgba(16,18,17,.15)}
+.market-grid .art{position:relative;isolation:isolate;min-height:300px;padding:22px;overflow:hidden;border-bottom:1px solid rgba(16,18,17,.08);background-size:cover;background-position:center}
+.market-grid .art:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(0,0,0,.18));pointer-events:none}
+.market-grid .art:after{content:'REAL PRODUCT PREVIEW';position:absolute;right:16px;bottom:16px;padding:8px 10px;border-radius:999px;background:rgba(10,12,11,.72);border:1px solid rgba(255,255,255,.18);color:#fff;font:700 8px 'DM Sans',sans-serif;letter-spacing:1.4px;backdrop-filter:blur(10px)}
+.market-grid .art>span,.market-grid .art>strong,.market-grid .art>small{position:relative;z-index:2;text-shadow:0 2px 18px rgba(0,0,0,.22)}
+.market-grid .art>span{font-size:9px;letter-spacing:2px;opacity:.82}
+.market-grid .art>strong{font-size:35px;letter-spacing:-2.8px;line-height:.84;display:block;margin-top:10px}
+.market-grid .art>small{display:block;margin-top:14px;font-size:10px;letter-spacing:.15px;opacity:.82}
 
-/* Prompt Vault — AI console / prompt stack */
-.market-grid .art.ai{background:radial-gradient(circle at 76% 22%,rgba(217,249,76,.34),transparent 25%),linear-gradient(145deg,#151815,#343c24 55%,#d9f94c)}
-.market-grid .art.ai:after{content:'PROMPT 01  /  RESEARCH  ↗';display:flex;align-items:flex-end;padding:16px;color:#f5f5f0;font:700 9px/1.3 'DM Sans',sans-serif;letter-spacing:1.2px;background:linear-gradient(135deg,#ffffff0d,#00000066)}
-.market-grid .art.ai strong{color:#f7f7f2;text-shadow:0 8px 30px rgba(0,0,0,.28)}
+.market-grid .art.ai{background-image:url('assets/visuals/product-prompt-vault.svg')}
+.market-grid .art.web{background-image:url('assets/visuals/product-website-guide.svg')}
+.market-grid .art.social-art{background-image:url('assets/visuals/product-content-engine.svg')}
+.market-grid .art.business{background-image:url('assets/visuals/product-launch-kit.svg')}
+.market-grid .art.ai2{background-image:url('assets/visuals/product-automation-kit.svg')}
+.market-grid .art.brand-art{background-image:url('assets/visuals/product-brand-starter.svg')}
 
-/* Website guide — browser window */
-.market-grid .art.web{background:radial-gradient(circle at 20% 80%,rgba(255,255,255,.72),transparent 30%),linear-gradient(145deg,#0f1720,#253d52 55%,#a7c7df)}
-.market-grid .art.web:after{content:'●  ●  ●     OBA / WEB  /  LIVE';display:flex;align-items:flex-start;padding:14px;color:#dce7ff;font:700 8px 'DM Sans',sans-serif;letter-spacing:1px;background:linear-gradient(180deg,#10161ddd,#ffffff10);transform:rotate(-4deg)}
-.market-grid .art.web strong{color:#f7fbff}
-
-/* Content Engine — editorial content board */
-.market-grid .art.social-art{background:radial-gradient(circle at 84% 72%,rgba(217,249,76,.28),transparent 28%),linear-gradient(145deg,#17151b,#3a2c46 55%,#8f67a8)}
-.market-grid .art.social-art:after{content:'01  HOOK     02  VALUE     03  CTA';display:flex;align-items:center;padding:16px;color:#f7f3fa;font:700 8px 'DM Sans',sans-serif;letter-spacing:1px;background:#1119;transform:rotate(4deg)}
-.market-grid .art.social-art strong{color:#fff}
-
-/* Launch Kit — launch checklist / system */
-.market-grid .art.business{background:radial-gradient(circle at 72% 24%,rgba(217,249,76,.32),transparent 24%),linear-gradient(145deg,#1a1713,#493326 58%,#b78362)}
-.market-grid .art.business:after{content:'✓ BRAND   ✓ SITE   ✓ SOCIAL   → LAUNCH';display:flex;align-items:flex-end;padding:16px;color:#fff7ef;font:800 8px 'DM Sans',sans-serif;letter-spacing:1px;background:linear-gradient(135deg,#ffffff0c,#00000045);transform:rotate(-5deg)}
-.market-grid .art.business strong{color:#fff8f0}
-
-/* Automation Kit — workflow diagram */
-.market-grid .art.ai2{background:radial-gradient(circle at 22% 22%,rgba(217,249,76,.26),transparent 24%),linear-gradient(145deg,#0f1815,#21453a 58%,#78a994)}
-.market-grid .art.ai2:after{content:'TRIGGER  →  AI  →  ACTION';display:flex;align-items:center;padding:16px;color:#e9fff4;font:800 8px 'DM Sans',sans-serif;letter-spacing:1.2px;background:#07110dcc;transform:rotate(3deg)}
-.market-grid .art.ai2 strong{color:#f2fff8}
-
-/* Brand Starter — identity board */
-.market-grid .art.brand-art{background:radial-gradient(circle at 78% 24%,rgba(217,249,76,.3),transparent 24%),linear-gradient(145deg,#151515,#38332e 58%,#a99a8b)}
-.market-grid .art.brand-art:after{content:'TYPE  /  TONE  /  SYSTEM';display:flex;align-items:flex-start;padding:16px;color:#f4efe9;font:800 8px 'DM Sans',sans-serif;letter-spacing:1.2px;background:linear-gradient(135deg,#ffffff0c,#00000055);transform:rotate(-4deg)}
-.market-grid .art.brand-art strong{color:#fff}
-
-/* Make the product copy feel like a premium catalogue, not a template gallery. */
 .market-grid .pbody{padding:24px 24px 26px}
 .market-grid .pbody>span{letter-spacing:1.4px;font-size:9px}
 .market-grid .pbody h3{font-size:23px;margin:10px 0 8px}
@@ -78,5 +35,5 @@
 @media(max-width:520px){
   .nav nav.open{top:70px}
   .market-grid .art{height:300px;min-height:300px}
-  .market-grid .art strong{font-size:33px}
+  .market-grid .art>strong{font-size:33px}
 }
