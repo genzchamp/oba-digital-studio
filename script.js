@@ -20,12 +20,12 @@ const PRODUCT_NAMES={
   'Brand Starter System':'brand-starter'
 };
 const PRODUCT_MESSAGES={
-  'chatgpt-prompts':"Hi OBA Digital Studio, I'd like to buy the ChatGPT Prompt Vault. Please send me the current price and payment instructions.",
-  'build-website':"Hi OBA Digital Studio, I'd like to buy Create Your Own Website in Minutes. Please send me the current price and payment instructions.",
-  'social-content':"Hi OBA Digital Studio, I'd like to buy the Social Content Engine. Please send me the current price and payment instructions.",
-  'launch-kit':"Hi OBA Digital Studio, I'd like to buy the Digital Launch Kit. Please send me the current price and payment instructions.",
-  'ai-automation':"Hi OBA Digital Studio, I'd like to buy the AI Automation Starter Kit. Please send me the current price and payment instructions.",
-  'brand-starter':"Hi OBA Digital Studio, I'd like to buy the Brand Starter System. Please send me the current price and payment instructions."
+  'chatgpt-prompts':"Hi OBA Digital Studio, I'd like to buy the ChatGPT Prompt Vault for ₦5,000. Please send me payment and delivery instructions.",
+  'build-website':"Hi OBA Digital Studio, I'd like to buy Create Your Own Website in Minutes for ₦7,500. Please send me payment and delivery instructions.",
+  'social-content':"Hi OBA Digital Studio, I'd like to buy the Social Content Engine for ₦6,500. Please send me payment and delivery instructions.",
+  'launch-kit':"Hi OBA Digital Studio, I'd like to buy the Digital Launch Kit for ₦9,000. Please send me payment and delivery instructions.",
+  'ai-automation':"Hi OBA Digital Studio, I'd like to buy the AI Automation Starter Kit for ₦10,000. Please send me payment and delivery instructions.",
+  'brand-starter':"Hi OBA Digital Studio, I'd like to buy the Brand Starter System for ₦7,500. Please send me payment and delivery instructions."
 };
 const SERVICE_MESSAGES={
   websites:"Hi OBA Digital Studio, I'm interested in getting a website built for my business. I'd like to discuss my project.",
