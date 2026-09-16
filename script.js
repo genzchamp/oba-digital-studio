@@ -1,12 +1,10 @@
 const WA='2348123958585';
 const wa=(message)=>`https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
 
-// Add live checkout URLs here when payment listings are published.
-// Until then, product buttons open a pre-filled WhatsApp purchase request.
 const PRODUCT_LINKS={
-  'chatgpt-prompts':'',
-  'build-website':'',
-  'social-content':'',
+  'chatgpt-prompts':'https://selar.com/r49h8528sq',
+  'build-website':'https://selar.com/89p696690n',
+  'social-content':'https://selar.com/gx0w8o1576',
   'launch-kit':'',
   'ai-automation':'',
   'brand-starter':''
@@ -49,5 +47,5 @@ function handleProduct(button){const key=productKey(button.dataset.selar||button
 document.querySelectorAll('.buy-large,[data-selar]').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();handleProduct(button)}));
 document.querySelectorAll('[data-service]').forEach(link=>{const isDetailAction=!link.getAttribute('href')||link.getAttribute('href')==='#'||link.hasAttribute('data-whatsapp-service');if(!isDetailAction)return;const message=SERVICE_MESSAGES[link.dataset.service]||SERVICE_MESSAGES.general;link.href=wa(message);link.target='_blank';link.rel='noopener'});
 const mainWA=document.getElementById('wa');if(mainWA&&!mainWA.dataset.noWhatsapp)mainWA.href=mainWA.dataset.service?wa(SERVICE_MESSAGES[mainWA.dataset.service]):wa(SERVICE_MESSAGES.general);
-const menu=document.querySelector('.menu');const nav=document.querySelector('.nav nav');if(menu&&nav){menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});document.querySelectorAll('.nav nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}))}
+const menu=document.querySelector('.menu');const nav=document.querySelector('.nav nav');if(menu&&nav){menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu')});document.querySelectorAll('.nav nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu')}))}
 if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});document.querySelectorAll('.product,.work-card,.service-list a,.step,.why-grid>div,.hero-copy,.hero-visual,.box-grid .box,.contact-card').forEach(el=>{el.classList.add('reveal');observer.observe(el)})}
