@@ -1,6 +1,20 @@
 const WA='2348123958585';
 const wa=(message)=>`https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
 
+/* SEO enhancement: add page-aware canonical, social metadata and structured data. */
+(function(){
+  const canonical=new URL(window.location.pathname,window.location.origin).href;
+  const pageTitle=document.title||'OBA Digital Studio';
+  const description=document.querySelector('meta[name="description"]')?.content||'OBA Digital Studio helps creators and businesses build websites, automate workflows, strengthen brands and launch digital products.';
+  const addMeta=(attr,value)=>{if(!value)return;let el=document.querySelector(`meta[${attr}]`);if(!el){el=document.createElement('meta');el.setAttribute(attr.split('=')[0],attr.split('=')[1]);document.head.appendChild(el)}el.content=value};
+  let link=document.querySelector('link[rel="canonical"]');
+  if(!link){link=document.createElement('link');link.rel='canonical';document.head.appendChild(link)}
+  link.href=canonical;
+  addMeta('property=og:type','website');addMeta('property=og:title',pageTitle);addMeta('property=og:description',description);addMeta('property=og:url',canonical);addMeta('property=og:site_name','OBA Digital Studio');
+  addMeta('name=twitter:card','summary');addMeta('name=twitter:title',pageTitle);addMeta('name=twitter:description',description);
+  if(!document.querySelector('script[type="application/ld+json"]')){const ld=document.createElement('script');ld.type='application/ld+json';ld.textContent=JSON.stringify({'@context':'https://schema.org','@type':'Organization','name':'OBA Digital Studio','url':window.location.origin+'/oba-digital-studio/','description':description,'contactPoint':{'@type':'ContactPoint','telephone':'+2348123958585','contactType':'customer service'}});document.head.appendChild(ld)}
+})();
+
 const PRODUCT_LINKS={
   'chatgpt-prompts':'https://selar.com/r49h8528sq',
   'build-website':'https://selar.com/89p696690n',
