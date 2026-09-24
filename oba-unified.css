@@ -1,0 +1,64 @@
+/* OBA Digital Studio — shared visual system
+   Dark sections, consistent brand treatment, readable cards, and responsive layout. */
+:root{--oba-bg:#f0f1eb;--oba-ink:#101411;--oba-dark:#0a0d0a;--oba-panel:#121812;--oba-panel-2:#182018;--oba-line:#303a2f;--oba-lime:#d9f94c;--oba-muted:#aab5a6}
+html{background:var(--oba-bg)}
+body{background:var(--oba-bg);color:var(--oba-ink)}
+.nav{background:rgba(10,13,10,.96)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important}
+.nav nav a,.nav-cta,.brand{color:#f5f8ef!important}
+.nav nav a:hover,.nav nav a.active{color:var(--oba-lime)!important}
+.nav-cta{border-color:#78866f!important}
+.brand{position:relative;gap:10px;min-height:46px}
+.brand:before{content:"";width:44px;height:44px;flex:0 0 44px;display:block;background:url("assets/oba-logo.svg") center/contain no-repeat}
+.brand b,.brand span{display:none!important}
+.footer .brand:before{width:52px;height:52px;flex-basis:52px}
+.menu{color:#f5f8ef!important}
+.section{background:var(--oba-bg)}
+.services{background:var(--oba-dark)!important}
+.free{background:#cfe942!important;color:#101411!important}
+.muted{background:#151b15!important;color:#f5f8ef!important}
+.muted h1,.muted h2,.muted h3,.muted p,.muted li{color:inherit}
+.product,.service-card,.contact-card,.box,.cta{background:var(--oba-panel)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important}
+.product .pbody h3,.product .pbody p,.product .pbody>span,.service-card h3,.service-card p,.contact-card h2,.contact-card p,.box h3,.box p,.cta h2,.cta p{color:inherit}
+.product .pbody p,.product .pbody>span,.service-card p,.contact-card p,.box p,.cta p{color:var(--oba-muted)!important}
+.product .pbody b,.service-card span,.box span{color:var(--oba-lime)!important}
+.cta{box-shadow:0 20px 60px #0005!important}
+.cta .btn.ghost,.cta .btn.secondary{color:#f5f8ef!important;border-color:var(--oba-lime)!important}
+.float{background:var(--oba-panel)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important}
+.why-grid{border-color:var(--oba-line)!important}
+.why-grid>div{border-color:var(--oba-line)!important}
+.why-grid h3,.why-grid p{color:inherit}
+.why-grid p{color:var(--oba-muted)!important}
+.footer{background:#070a07!important;color:#e3eadf!important;border-top:1px solid var(--oba-line)!important}
+.footer a{color:#e3eadf!important}
+.footer p,.footer small{color:#82907e!important}
+.footer small{border-color:var(--oba-line)!important}
+.mini-nav{background:var(--oba-dark)!important;border-color:var(--oba-line)!important}
+.mini-nav a{color:#f5f8ef!important}
+.product-body,.two-col{color:var(--oba-ink)}
+.product-body .box{background:var(--oba-panel)!important}
+.page-hero{background:linear-gradient(135deg,#080b08,#172017 70%,#26341c)!important}
+.product-hero{background:linear-gradient(135deg,#d9f94c,#a9c52e)!important;color:#101411!important}
+.social a{color:var(--oba-lime)!important}
+.oba-social-link{display:inline-flex;align-items:center;gap:8px}
+.oba-social-link svg{width:17px;height:17px}
+.oba-icon-label{font-size:0!important}
+.oba-icon-label:after{content:attr(aria-label);font-size:12px}
+@media(max-width:800px){
+ .nav{min-height:76px;height:auto;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+ .nav .menu{display:block;order:2;margin-left:auto}
+ .nav nav{display:none;order:4;width:100%;flex-direction:column;align-items:stretch;gap:0;padding-top:10px}
+ .nav nav.open{display:flex}
+ .nav nav a{padding:12px 0;border-top:1px solid var(--oba-line)}
+ .nav .nav-cta{order:3;font-size:12px;padding:9px 12px}
+ .brand:before{width:40px;height:40px;flex-basis:40px}
+ .footer .brand:before{width:44px;height:44px;flex-basis:44px}
+ .market-grid,.service-grid,.box-grid,.contact-grid,.work-grid,.two-col,.product-body,.free-box,.cta{grid-template-columns:1fr!important}
+ .head{grid-template-columns:1fr;gap:20px}
+ .why-grid{grid-template-columns:1fr 1fr}
+ .why-grid>div{padding:22px 12px!important}
+ .cta-actions{justify-content:flex-start}
+ .footer{grid-template-columns:1fr!important}
+ .footer>div:nth-child(2){justify-content:flex-start}
+ .footer small{grid-column:auto}
+}
+@media(max-width:480px){.why-grid{grid-template-columns:1fr}.hero{padding:55px 0}.section{padding:70px 0}.work-card strong{font-size:42px}}
