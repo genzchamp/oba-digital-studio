@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://genzchamp.github.io/oba-digital-studio/sitemap.xml
+Sitemap: https://www.oba-studio.online/sitemap.xml
