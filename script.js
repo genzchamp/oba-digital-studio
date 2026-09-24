@@ -34,6 +34,18 @@
   }
   function cleanSocialLabels(){document.querySelectorAll('a[href*="tiktok.com"],a[href*="snapchat.com"]').forEach(link=>{const isTikTok=link.href.toLowerCase().includes('tiktok.com');link.textContent=isTikTok?'TikTok':'Snapchat';link.setAttribute('aria-label',isTikTok?'TikTok profile':'Snapchat profile');link.classList.add('oba-social-link');link.target='_blank';link.rel='noopener'})}
   function hidePhoneText(){const phone=/\+?234[\s-]?812[\s-]?395[\s-]?8585|0812[\s-]?395[\s-]?8585/g;const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{if(phone.test(node.nodeValue))node.nodeValue=node.nodeValue.replace(phone,'');phone.lastIndex=0})}
-  function run(){addStylesheet();addFavicon();configureNav();configureWhatsApp();cleanSocialLabels();hidePhoneText()}
+  function replaceHomepageWork(){
+    const grid=document.querySelector('#work .work-grid');
+    if(!grid||grid.dataset.obaWorkUpdated==='true')return;
+    grid.dataset.obaWorkUpdated='true';
+    const cards=[
+      ['dark','AGRICULTURE / AGRITECH','OBA<br>AGROTECH','Digital platform · Website','case-study-oba-agrotech.html'],
+      ['tech','GAMING / ENTERTAINMENT','ABD<br>GAMES','Gaming website · Interactive concept','https://genzchamp.github.io/abd-games/'],
+      ['gold','TECH / GADGETS',"FREEMAN'S<br>GADGET",'Gadget storefront · E-commerce demo','https://genzchamp.github.io/freeman-gadgets/'],
+      ['pink','FASHION / HANDMADE CRAFT','PERERAT<br><i>CROCHET</i>','Handmade brand · Product showcase','https://genzchamp.github.io/pererat-crochet/']
+    ];
+    grid.innerHTML=cards.map(([tone,label,title,desc,url])=>`<a class="work-card ${tone}" href="${url}" ${url.startsWith('http')?'target="_blank" rel="noopener"':''}><div><small>${label}</small><strong>${title}</strong><span>${desc}</span></div><footer>View demo ↗</footer></a>`).join('');
+  }
+  function run(){addStylesheet();addFavicon();configureNav();configureWhatsApp();cleanSocialLabels();hidePhoneText();replaceHomepageWork()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
