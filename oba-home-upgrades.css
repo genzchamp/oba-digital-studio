@@ -3,7 +3,32 @@
 /* Official OBA logo treatment and TikTok handle. */
 .brand{gap:12px;min-height:44px;align-items:center}
 .brand::before{content:"";display:block;width:46px;height:46px;flex:0 0 46px;background:url("assets/oba-logo.svg") center/contain no-repeat}
-.footer .brand::before{width:52px;height:52px;flex-basis:52px}
 .brand b,.brand span{display:none}
-.footer::after{content:"TikTok · @oba.digital.studio";display:block;grid-column:1/-1;color:#a6ff00;font-size:12px;letter-spacing:.4px;margin-top:8px}
+.footer .brand::before{width:52px;height:52px;flex-basis:52px}
+.footer::after{content:"TikTok · @oba.digital.studio";display:block;grid-column:1/-1;color:#c9ff3d;font-size:12px;letter-spacing:.4px;margin-top:8px}
+
+/* OBA lime-glow + aubergine direction */
+:root{--oba-lime:#c9ff3d;--oba-lime-soft:#a8df27;--oba-aubergine:#8b5cf6;--oba-aubergine-deep:#24133d}
+body{background:#080a0d;color:#f7f8fb}
+.hero{background:linear-gradient(90deg,rgba(5,7,10,.98) 0%,rgba(5,7,10,.86) 42%,rgba(5,7,10,.3) 100%),url('assets/hero-background.png') center/cover!important}
+.hero:after{background:radial-gradient(circle at 72% 32%,rgba(201,255,61,.22),transparent 30%),radial-gradient(circle at 80% 65%,rgba(139,92,246,.2),transparent 34%),linear-gradient(0deg,#07090c 0%,transparent 35%)!important}
+.hero h1 em{background:linear-gradient(90deg,#fff 0%,var(--oba-lime) 48%,#d7b7ff 100%)!important;-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{background:linear-gradient(100deg,var(--oba-lime),#a8df27)!important;color:#0b1006!important;box-shadow:0 12px 35px rgba(201,255,61,.22)!important}
+.btn.ghost{background:transparent!important;color:#fff!important;border:1px solid rgba(201,255,61,.5)!important}
+.nav nav a:hover,.nav nav a.active{color:var(--oba-lime)!important}
+.nav-cta:hover{border-color:var(--oba-lime)!important;color:var(--oba-lime)!important}
+.ticker{background:linear-gradient(90deg,var(--oba-lime),#b4ed2e,var(--oba-aubergine))!important;color:#0b1006!important}
+.services{background:linear-gradient(135deg,#0a0d12,#171022)!important}
+.service-list a:hover{color:var(--oba-lime)!important}
+.service-list b{border-color:rgba(201,255,61,.55)!important;color:var(--oba-lime)!important}
+.free{background:linear-gradient(135deg,#19112b,#27153f)!important}
+.free-list a:not(.btn){border-color:rgba(201,255,61,.3)!important}
+.free-list .btn{color:#0b1006!important}
+.head h2 em{color:var(--oba-lime)!important}
+.work-card{border-color:rgba(201,255,61,.2)!important}
+.cta{background:linear-gradient(135deg,#10151d,#1b1230)!important;border-color:rgba(201,255,61,.24)!important}
+.page-hero{background:linear-gradient(135deg,#080a0d,#21132f 62%,#17210d)!important}
+.page-hero:after{border-color:rgba(201,255,61,.4)!important;box-shadow:0 0 0 45px rgba(201,255,61,.07),0 0 0 90px rgba(139,92,246,.08)!important}
+.box span,.buy-large{color:#0b1006!important;background:var(--oba-lime)!important}
+
 @media(max-width:700px){.brand::before{width:40px;height:40px;flex-basis:40px}}
