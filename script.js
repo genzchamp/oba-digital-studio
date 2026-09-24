@@ -40,11 +40,11 @@
     grid.dataset.obaWorkUpdated='true';
     const cards=[
       ['dark','AGRICULTURE / AGRITECH','OBA<br>AGROTECH','Digital platform · Website','case-study-oba-agrotech.html'],
-      ['tech','GAMING / ENTERTAINMENT','ABD<br>GAMES','Gaming website · Interactive concept','https://genzchamp.github.io/abd-games/'],
-      ['gold','TECH / GADGETS',"FREEMAN'S<br>GADGET",'Gadget storefront · E-commerce demo','https://genzchamp.github.io/freeman-gadgets/'],
-      ['pink','FASHION / HANDMADE CRAFT','PERERAT<br><i>CROCHET</i>','Handmade brand · Product showcase','https://genzchamp.github.io/pererat-crochet/']
+      ['tech','GAMING / ENTERTAINMENT','ABD<br>GAMES','Gaming website · Interactive concept','case-study-abd-games.html'],
+      ['gold','TECH / GADGETS',"FREEMAN'S<br>GADGET",'Gadget storefront · E-commerce demo','case-study-freemans-gadget.html'],
+      ['pink','FASHION / HANDMADE CRAFT','PERERAT<br><i>CROCHET</i>','Handmade brand · Product showcase','case-study-pererat-crochet.html']
     ];
-    grid.innerHTML=cards.map(([tone,label,title,desc,url])=>`<a class="work-card ${tone}" href="${url}" ${url.startsWith('http')?'target="_blank" rel="noopener"':''}><div><small>${label}</small><strong>${title}</strong><span>${desc}</span></div><footer>View demo ↗</footer></a>`).join('');
+    grid.innerHTML=cards.map(([tone,label,title,desc,url])=>`<a class="work-card ${tone}" href="${url}"><div><small>${label}</small><strong>${title}</strong><span>${desc}</span></div><footer>View case study ↗</footer></a>`).join('');
   }
   function run(){addStylesheet();addFavicon();configureNav();configureWhatsApp();cleanSocialLabels();hidePhoneText();replaceHomepageWork()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
