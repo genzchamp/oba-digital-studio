@@ -1,3 +1,9 @@
 @import url('oba-reference-design.css');
 
-/* Reference design layer supersedes the earlier homepage visual overrides. */
+/* Official OBA logo treatment and TikTok handle. */
+.brand{gap:12px;min-height:44px;align-items:center}
+.brand::before{content:"";display:block;width:46px;height:46px;flex:0 0 46px;background:url("assets/oba-logo.svg") center/contain no-repeat}
+.footer .brand::before{width:52px;height:52px;flex-basis:52px}
+.brand b,.brand span{display:none}
+.footer::after{content:"TikTok · @oba.digital.studio";display:block;grid-column:1/-1;color:#a6ff00;font-size:12px;letter-spacing:.4px;margin-top:8px}
+@media(max-width:700px){.brand::before{width:40px;height:40px;flex-basis:40px}}
