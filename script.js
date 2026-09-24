@@ -19,91 +19,21 @@
     'ai-automation-kit':"Hi OBA Digital Studio, I'd like to ask about the AI Automation Starter Kit. Please send me the payment and delivery details.",
     'brand-starter':"Hi OBA Digital Studio, I'd like to ask about the Brand Starter System. Please send me the payment and delivery details."
   };
-  const productLinks={
-    'chatgpt-prompts':'https://selar.com/r49h8528sq',
-    'build-website':'https://selar.com/89p696690n'
-  };
-  const serviceAliases={
-    'Website Design & Development':'websites','AI Automation':'ai-automation','Branding & Visual Identity':'branding',
-    'Social Media Management':'social-media','Digital Product Creation':'digital-products','Digital Strategy & Setup':'digital-strategy'
-  };
+  const productLinks={'chatgpt-prompts':'https://selar.com/r49h8528sq','build-website':'https://selar.com/89p696690n'};
+  const serviceAliases={'Website Design & Development':'websites','AI Automation':'ai-automation','Branding & Visual Identity':'branding','Social Media Management':'social-media','Digital Product Creation':'digital-products','Digital Strategy & Setup':'digital-strategy'};
   const getMessage=(key)=>messages[key]||messages.general;
-  const productKey=(value)=>({
-    'ChatGPT Prompt Vault':'chatgpt-prompts','Create Your Own Website in Minutes':'build-website','Social Content Engine':'social-content',
-    'Digital Launch Kit':'launch-kit','AI Automation Starter Kit':'ai-automation-kit','Brand Starter System':'brand-starter'
-  }[value]||value||'general');
-
-  function addStylesheet(){
-    if(document.querySelector('link[data-oba-unified-style]'))return;
-    const link=document.createElement('link');
-    link.rel='stylesheet';link.href='oba-unified.css';link.dataset.obaUnifiedStyle='true';
-    document.head.appendChild(link);
-  }
-  function addFavicon(){
-    if(document.querySelector('link[rel="icon"]'))return;
-    const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link);
-  }
-  function configureNav(){
-    const menu=document.querySelector('.menu');
-    const nav=document.querySelector('.nav nav');
-    if(!menu||!nav||menu.dataset.obaReady==='true')return;
-    menu.dataset.obaReady='true';
-    menu.addEventListener('click',()=>{
-      const open=nav.classList.toggle('open');
-      menu.setAttribute('aria-expanded',String(open));
-      menu.setAttribute('aria-label',open?'Close menu':'Open menu');
-    });
-    nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
-      nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu');
-    }));
-  }
+  const productKey=(value)=>({'ChatGPT Prompt Vault':'chatgpt-prompts','Create Your Own Website in Minutes':'build-website','Social Content Engine':'social-content','Digital Launch Kit':'launch-kit','AI Automation Starter Kit':'ai-automation-kit','Brand Starter System':'brand-starter'}[value]||value||'general');
+  function addStylesheet(){if(document.querySelector('link[data-oba-unified-style]'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='oba-unified.css';link.dataset.obaUnifiedStyle='true';document.head.appendChild(link)}
+  function addFavicon(){if(document.querySelector('link[rel="icon"]'))return;const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link)}
+  function configureNav(){const menu=document.querySelector('.menu'),nav=document.querySelector('.nav nav');if(!menu||!nav||menu.dataset.obaReady==='true')return;menu.dataset.obaReady='true';menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu')});nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu')}))}
   function configureWhatsApp(){
-    document.querySelectorAll('[data-service]').forEach(link=>{
-      const key=serviceAliases[link.dataset.service]||link.dataset.service;
-      link.href=wa(getMessage(key));link.target='_blank';link.rel='noopener';
-    });
-    const main=document.getElementById('wa');
-    if(main){const key=main.dataset.service||'general';main.href=wa(getMessage(key));main.target='_blank';main.rel='noopener'}
-    document.querySelectorAll('[data-wa-message]').forEach(link=>{
-      link.href=wa(link.dataset.waMessage);link.target='_blank';link.rel='noopener';
-    });
-    document.querySelectorAll('.buy-large,[data-product]').forEach(link=>{
-      if(link.dataset.obaBuyReady==='true')return;
-      link.dataset.obaBuyReady='true';
-      link.addEventListener('click',(event)=>{
-        const key=productKey(link.dataset.product||link.dataset.selar||link.closest('.product')?.querySelector('h3')?.textContent?.trim());
-        if(productLinks[key])return;
-        event.preventDefault();window.open(wa(getMessage(key)),'_blank','noopener');
-      });
-    });
-    document.querySelectorAll('a[href]').forEach(link=>{
-      const href=link.getAttribute('href')||'';
-      const file=href.split('?')[0].split('#')[0].split('/').pop();
-      const key={
-        'service-websites.html':'websites','service-ai-automation.html':'ai-automation','service-branding.html':'branding',
-        'service-social-media.html':'social-media','service-digital-products.html':'digital-products','service-digital-strategy.html':'digital-strategy'
-      }[file];
-      if(key){link.href=wa(getMessage(key));link.target='_blank';link.rel='noopener'}
-    });
+    document.querySelectorAll('[data-service]').forEach(link=>{const key=serviceAliases[link.dataset.service]||link.dataset.service;link.href=wa(getMessage(key));link.target='_blank';link.rel='noopener'});
+    const main=document.getElementById('wa');if(main){const key=main.dataset.service||'general';main.href=wa(getMessage(key));main.target='_blank';main.rel='noopener'}
+    document.querySelectorAll('[data-wa-message]').forEach(link=>{link.href=wa(link.dataset.waMessage);link.target='_blank';link.rel='noopener'});
+    document.querySelectorAll('.buy-large,[data-product]').forEach(link=>{if(link.dataset.obaBuyReady==='true')return;link.dataset.obaBuyReady='true';link.addEventListener('click',(event)=>{const key=productKey(link.dataset.product||link.dataset.selar||link.closest('.product')?.querySelector('h3')?.textContent?.trim());if(productLinks[key])return;event.preventDefault();window.open(wa(getMessage(key)),'_blank','noopener')})});
   }
-  function cleanSocialLabels(){
-    document.querySelectorAll('a[href*="tiktok.com"],a[href*="snapchat.com"]').forEach(link=>{
-      const isTikTok=link.href.toLowerCase().includes('tiktok.com');
-      link.textContent=isTikTok?'TikTok':'Snapchat';
-      link.setAttribute('aria-label',isTikTok?'TikTok profile':'Snapchat profile');
-      link.classList.add('oba-social-link');
-      link.target='_blank';link.rel='noopener';
-    });
-  }
-  function hidePhoneText(){
-    const phone=/\+?234[\s-]?812[\s-]?395[\s-]?8585|0812[\s-]?395[\s-]?8585/g;
-    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
-    const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
-    nodes.forEach(node=>{
-      if(phone.test(node.nodeValue)){node.nodeValue=node.nodeValue.replace(phone,'');}
-      phone.lastIndex=0;
-    });
-  }
-  function run(){addStylesheet();addFavicon();configureNav();configureWhatsApp();cleanSocialLabels();hidePhoneText();}
+  function cleanSocialLabels(){document.querySelectorAll('a[href*="tiktok.com"],a[href*="snapchat.com"]').forEach(link=>{const isTikTok=link.href.toLowerCase().includes('tiktok.com');link.textContent=isTikTok?'TikTok':'Snapchat';link.setAttribute('aria-label',isTikTok?'TikTok profile':'Snapchat profile');link.classList.add('oba-social-link');link.target='_blank';link.rel='noopener'})}
+  function hidePhoneText(){const phone=/\+?234[\s-]?812[\s-]?395[\s-]?8585|0812[\s-]?395[\s-]?8585/g;const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{if(phone.test(node.nodeValue))node.nodeValue=node.nodeValue.replace(phone,'');phone.lastIndex=0})}
+  function run(){addStylesheet();addFavicon();configureNav();configureWhatsApp();cleanSocialLabels();hidePhoneText()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
