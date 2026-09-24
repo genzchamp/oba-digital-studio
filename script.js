@@ -74,3 +74,68 @@ if(mainWA&&!mainWA.dataset.noWhatsapp){mainWA.href=mainWA.dataset.service?wa(SER
 const menu=document.querySelector('.menu');const nav=document.querySelector('.nav nav');
 if(menu&&nav){menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu')});document.querySelectorAll('.nav nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu')}))}
 if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});document.querySelectorAll('.product,.work-card,.service-list a,.step,.why-grid>div,.hero-copy,.hero-visual,.box-grid .box,.contact-card').forEach(el=>{el.classList.add('reveal');observer.observe(el)})}
+
+/* OBA unified dark system: additive, page-safe overrides that preserve existing layout and content. */
+(function(){
+  if(document.getElementById('oba-unified-dark-system'))return;
+  const style=document.createElement('style');
+  style.id='oba-unified-dark-system';
+  style.textContent=`
+    :root{color-scheme:dark}
+    html,body{background:#090b09!important;color:#f4f6ef!important}
+    body{background-image:radial-gradient(circle at 85% 8%,rgba(217,249,76,.06),transparent 28%)!important}
+    .nav,.mini-nav{background:rgba(9,11,9,.94)!important;color:#f4f6ef!important;border-color:#2b302a!important}
+    .nav nav a,.nav-cta,.mini-nav a,.brand{color:#f4f6ef!important}
+    .nav nav a:hover,.nav nav a.active{color:#d9f94c!important}
+    .nav .menu{color:#f4f6ef!important}
+    .section,.muted,.free,.cta,.contact-card,.product,.service-card,.float{background:#111511!important;color:#f4f6ef!important;border-color:#2c332b!important}
+    .muted{background:#0d100d!important}
+    .section p,.two-col p,.head>p,.pbody p,.product-body p,.product-body li,.contact-card p,.service-card p,.cta p{color:#aeb7aa!important}
+    .section h1,.section h2,.section h3,.two-col h2,.contact-card h2,.service-card h3,.cta h2{color:#f4f6ef!important}
+    .pbody,.product-body,.faq{background:transparent!important;color:#f4f6ef!important}
+    .product .art{border-bottom:1px solid #2c332b}
+    .box{background:#151b15!important;color:#f4f6ef!important;border-color:#303a2f!important}
+    .box p,.box span{color:#b6c0b1!important}
+    .free{background:#151b15!important}
+    .free h2,.free p,.free-list span,.free-list a:not(.btn){color:#f4f6ef!important}
+    .cta{box-shadow:0 20px 60px rgba(0,0,0,.3)!important}
+    .btn.secondary,.btn.ghost,.under{background:transparent!important;color:#f4f6ef!important;border-color:#d9f94c!important}
+    .buy{color:#d9f94c!important;border-color:#d9f94c!important}
+    .footer{background:#070907!important;color:#dce5d8!important;border-color:#2b302a!important}
+    .footer a{color:#dce5d8!important}
+    .footer p,.footer small{color:#899587!important}
+    .work-card.pink,.work-card.gold,.work-card.tech{filter:saturate(.72) brightness(.78)}
+    .social a{color:#d9f94c!important}
+    @media(max-width:800px){.nav nav a{border-color:#2b302a!important}}
+  `;
+  document.head.appendChild(style);
+})();
+
+/* Replace legacy TikTok references wherever they appear, including links and visible labels. */
+(function(){
+  const oldHandle='@genzchamp01';
+  const newHandle='@oba.digital.studio';
+  document.querySelectorAll('a[href*="tiktok.com"]').forEach(link=>{
+    link.href='https://www.tiktok.com/'+newHandle;
+    link.textContent=link.textContent.replace(oldHandle,newHandle);
+  });
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  const nodes=[];
+  while(walker.nextNode())nodes.push(walker.currentNode);
+  nodes.forEach(node=>{if(node.nodeValue.includes(oldHandle))node.nodeValue=node.nodeValue.replaceAll(oldHandle,newHandle)});
+})();
+
+/* Contact page: every service/product enquiry action opens WhatsApp with a relevant pre-filled message. */
+(function(){
+  if(!/contact\.html$/.test(window.location.pathname))return;
+  const detailedMessage="Hi OBA Digital Studio, I'd like to make a detailed enquiry about a project or collaboration. Please guide me on the next steps.";
+  document.querySelectorAll('.contact-card a[href^="mailto:"]').forEach(link=>{
+    link.href=wa(detailedMessage);link.target='_blank';link.rel='noopener';
+  });
+  document.querySelectorAll('.contact-card a:not([data-service]),.box-grid a[data-service]').forEach(link=>{
+    if(link.dataset.service)return;
+    const heading=link.closest('.contact-card,.box')?.querySelector('h2,h3')?.textContent?.trim()||'this enquiry';
+    const message=`Hi OBA Digital Studio, I'd like to enquire about ${heading}. Please send me the relevant details and next steps.`;
+    link.href=wa(message);link.target='_blank';link.rel='noopener';
+  });
+})();
