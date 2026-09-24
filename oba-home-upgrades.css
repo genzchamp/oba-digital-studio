@@ -2,7 +2,7 @@
 
 /* Official OBA logo treatment and TikTok handle. */
 .brand{gap:12px;min-height:44px;align-items:center}
-.brand::before{content:"";display:block;width:46px;height:46px;flex:0 0 46px;background:url("assets/oba-logo.svg") center/contain no-repeat}
+.brand::before{content:"";display:block;width:46px;height:46px;flex:0 0 46px;background:url("assets/oba-logo.svg") center/contain no-repeat;background-color:rgba(201,255,61,.08);border-radius:50%}
 .brand b,.brand span{display:none}
 .footer .brand::before{width:52px;height:52px;flex-basis:52px}
 .footer::after{content:"TikTok · @oba.digital.studio";display:block;grid-column:1/-1;color:#c9ff3d;font-size:12px;letter-spacing:.4px;margin-top:8px}
@@ -10,9 +10,10 @@
 /* OBA lime-glow + aubergine direction */
 :root{--oba-lime:#c9ff3d;--oba-lime-soft:#a8df27;--oba-aubergine:#8b5cf6;--oba-aubergine-deep:#24133d}
 body{background:#080a0d;color:#f7f8fb}
-.hero{background:linear-gradient(90deg,rgba(5,7,10,.98) 0%,rgba(5,7,10,.86) 42%,rgba(5,7,10,.3) 100%),url('assets/hero-background.png'),url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=90') center/cover!important}
+.hero{background:linear-gradient(90deg,rgba(5,7,10,.92) 0%,rgba(5,7,10,.56) 45%,rgba(5,7,10,.08) 100%),url('assets/hero-background.png') right center/cover!important}
 .hero:after{background:radial-gradient(circle at 72% 32%,rgba(201,255,61,.22),transparent 30%),radial-gradient(circle at 80% 65%,rgba(139,92,246,.2),transparent 34%),linear-gradient(0deg,#07090c 0%,transparent 35%)!important}
-.hero h1 em{background:linear-gradient(90deg,#fff 0%,var(--oba-lime) 48%,#d7b7ff 100%)!important;-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Keep the accent readable on mobile browsers: no large un-clipped gradient block behind the heading. */
+.hero h1 em{background:none!important;background-clip:initial!important;-webkit-background-clip:initial!important;color:var(--oba-lime)!important;-webkit-text-fill-color:var(--oba-lime)!important;text-shadow:0 0 22px rgba(201,255,61,.22)}
 .btn{background:linear-gradient(100deg,var(--oba-lime),#a8df27)!important;color:#0b1006!important;box-shadow:0 12px 35px rgba(201,255,61,.22)!important}
 .btn.ghost{background:transparent!important;color:#fff!important;border:1px solid rgba(201,255,61,.5)!important}
 .nav nav a:hover,.nav nav a.active{color:var(--oba-lime)!important}
@@ -31,4 +32,9 @@ body{background:#080a0d;color:#f7f8fb}
 .page-hero:after{border-color:rgba(201,255,61,.4)!important;box-shadow:0 0 0 45px rgba(201,255,61,.07),0 0 0 90px rgba(139,92,246,.08)!important}
 .box span,.buy-large{color:#0b1006!important;background:var(--oba-lime)!important}
 
-@media(max-width:700px){.brand::before{width:40px;height:40px;flex-basis:40px}}
+@media(max-width:700px){
+  .brand::before{width:40px;height:40px;flex-basis:40px}
+  .hero{background:linear-gradient(180deg,rgba(5,7,10,.08) 0%,rgba(5,7,10,.28) 42%,rgba(7,9,12,.96) 100%),url('assets/hero-background.png') right center/cover!important}
+  .hero-copy{padding-top:245px}
+  .hero h1 em{display:inline;color:var(--oba-lime)!important;background:none!important;-webkit-text-fill-color:var(--oba-lime)!important}
+}
