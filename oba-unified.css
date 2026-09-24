@@ -1,64 +1,103 @@
 /* OBA Digital Studio — shared visual system
-   Dark sections, consistent brand treatment, readable cards, and responsive layout. */
-:root{--oba-bg:#f0f1eb;--oba-ink:#101411;--oba-dark:#0a0d0a;--oba-panel:#121812;--oba-panel-2:#182018;--oba-line:#303a2f;--oba-lime:#d9f94c;--oba-muted:#aab5a6}
+   Consistent dark navigation, readable bright sections, unified logo and footer. */
+:root{--oba-bg:#f0f1eb;--oba-ink:#101411;--oba-dark:#0a0d0a;--oba-panel:#121812;--oba-panel-2:#182018;--oba-line:#303a2f;--oba-lime:#d9f94c;--oba-muted:#aab5a6;--oba-blue:#2457c5}
+
 html{background:var(--oba-bg)}
 body{background:var(--oba-bg);color:var(--oba-ink)}
-.nav{background:rgba(10,13,10,.96)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important}
-.nav nav a,.nav-cta,.brand{color:#f5f8ef!important}
-.nav nav a:hover,.nav nav a.active{color:var(--oba-lime)!important}
-.nav-cta{border-color:#78866f!important}
-.brand{position:relative;gap:10px;min-height:46px}
-.brand:before{content:"";width:44px;height:44px;flex:0 0 44px;display:block;background:url("assets/oba-logo.svg") center/contain no-repeat}
+
+/* Shared navigation: always dark and readable */
+.nav{background:rgba(10,13,10,.98)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important;box-shadow:0 8px 28px #0002!important}
+.nav nav a,.nav-cta,.brand{color:#f5f8ef!important;text-shadow:0 1px 2px #0008}
+.nav nav a:hover,.nav nav a.active{color:var(--oba-lime)!important;text-shadow:0 0 12px #d9f94c44}
+.nav-cta{border-color:#78866f!important;background:#101610!important}
+.nav-cta:hover{background:var(--oba-lime)!important;color:#101411!important;text-shadow:none}
+.menu{color:#f5f8ef!important;text-shadow:0 1px 2px #0008}
+
+/* One consistent rounded logo on every page */
+.brand{position:relative;display:flex!important;align-items:center;gap:10px;min-height:46px;background:transparent!important;text-decoration:none!important}
+.brand:before{content:"";width:44px;height:44px;flex:0 0 44px;display:block;background:url("assets/oba-logo.svg") center/contain no-repeat;border-radius:50%;filter:drop-shadow(0 2px 7px #0005)}
 .brand b,.brand span{display:none!important}
-.footer .brand:before{width:52px;height:52px;flex-basis:52px}
-.menu{color:#f5f8ef!important}
+.footer .brand:before,footer .brand:before{width:52px;height:52px;flex-basis:52px}
+
+/* Base page sections */
 .section{background:var(--oba-bg)}
-.services{background:var(--oba-dark)!important}
+.section h1,.section h2,.section h3,.section p,.section li{ text-shadow:0 1px 0 #ffffff55 }
+
+/* Dark sections */
+.services{background:var(--oba-dark)!important;color:#f5f8ef!important}
+.services h1,.services h2,.services h3,.services p,.services li,.services a{ text-shadow:0 1px 3px #0008 }
+.services .head>p,.services p{color:#c2ccc0!important}
+
+/* Bright sections: preserve brand colors but make text readable */
 .free{background:#cfe942!important;color:#101411!important}
+.free h1,.free h2,.free h3,.free p,.free li,.free a{color:#101411!important;text-shadow:0 1px 0 #ffffff55}
+.free-list a:not(.btn){color:#101411!important;text-shadow:0 1px 0 #ffffff55}
+
 .muted{background:#151b15!important;color:#f5f8ef!important}
 .muted h1,.muted h2,.muted h3,.muted p,.muted li{color:inherit}
-.product,.service-card,.contact-card,.box,.cta{background:var(--oba-panel)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important}
-.product .pbody h3,.product .pbody p,.product .pbody>span,.service-card h3,.service-card p,.contact-card h2,.contact-card p,.box h3,.box p,.cta h2,.cta p{color:inherit}
-.product .pbody p,.product .pbody>span,.service-card p,.contact-card p,.box p,.cta p{color:var(--oba-muted)!important}
-.product .pbody b,.service-card span,.box span{color:var(--oba-lime)!important}
+.muted p,.muted li{color:#c2ccc0!important;text-shadow:0 1px 3px #0008}
+
+/* Cards and content panels */
+.product,.service-card,.contact-card,.box,.cta{background:var(--oba-panel)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important;box-shadow:0 12px 35px #00000018!important}
+.product h1,.product h2,.product h3,.product p,.product li,.service-card h1,.service-card h2,.service-card h3,.service-card p,.contact-card h1,.contact-card h2,.contact-card h3,.contact-card p,.box h1,.box h2,.box h3,.box p,.cta h1,.cta h2,.cta h3,.cta p{color:inherit}
+.product p,.product .pbody>span,.service-card p,.contact-card p,.box p,.cta p{color:var(--oba-muted)!important;text-shadow:0 1px 3px #0008}
+.product .pbody b,.service-card span,.box span{color:var(--oba-lime)!important;text-shadow:0 1px 3px #0008}
 .cta{box-shadow:0 20px 60px #0005!important}
-.cta .btn.ghost,.cta .btn.secondary{color:#f5f8ef!important;border-color:var(--oba-lime)!important}
-.float{background:var(--oba-panel)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important}
+.cta .btn.ghost,.cta .btn.secondary{color:#f5f8ef!important;border-color:var(--oba-lime)!important;text-shadow:0 1px 3px #0008}
+.float{background:var(--oba-panel)!important;color:#f5f8ef!important;border-color:var(--oba-line)!important;box-shadow:0 20px 55px #0004!important}
+.float small,.float b,.float span{color:#f5f8ef!important;text-shadow:0 1px 3px #0008}
+
+/* Bright work cards: add readable text treatment without changing their palette */
+.work-card.pink,.work-card.gold,.work-card.tech{ text-shadow:0 1px 2px #ffffff88 }
+.work-card.pink strong,.work-card.gold strong,.work-card.tech strong{color:#101411!important;text-shadow:0 2px 0 #ffffff55}
+.work-card.pink small,.work-card.gold small,.work-card.tech small,.work-card.pink span,.work-card.gold span,.work-card.tech span{color:#202820!important}
+
 .why-grid{border-color:var(--oba-line)!important}
 .why-grid>div{border-color:var(--oba-line)!important}
 .why-grid h3,.why-grid p{color:inherit}
-.why-grid p{color:var(--oba-muted)!important}
-.footer{background:#070a07!important;color:#e3eadf!important;border-top:1px solid var(--oba-line)!important}
-.footer a{color:#e3eadf!important}
-.footer p,.footer small{color:#82907e!important}
-.footer small{border-color:var(--oba-line)!important}
+.why-grid p{color:#505b50!important;text-shadow:0 1px 0 #ffffff55}
+
+/* Unified footer for both .footer and plain footer markup */
+.footer,footer{background:#070a07!important;color:#e3eadf!important;border-top:1px solid var(--oba-line)!important}
+.footer a,footer a{color:#e3eadf!important;text-shadow:0 1px 3px #0008}
+.footer p,footer p,.footer small,footer small{color:#aab5a6!important;text-shadow:0 1px 3px #0008}
+.footer small,footer small{border-color:var(--oba-line)!important}
+footer>.container{width:min(1180px,92%);margin:auto}
+footer .brand{color:#f5f8ef!important}
+
 .mini-nav{background:var(--oba-dark)!important;border-color:var(--oba-line)!important}
-.mini-nav a{color:#f5f8ef!important}
+.mini-nav a{color:#f5f8ef!important;text-shadow:0 1px 3px #0008}
 .product-body,.two-col{color:var(--oba-ink)}
-.product-body .box{background:var(--oba-panel)!important}
-.page-hero{background:linear-gradient(135deg,#080b08,#172017 70%,#26341c)!important}
+.product-body .box{background:var(--oba-panel)!important;color:#f5f8ef!important}
+.product-body .box p,.product-body .box li{color:#c2ccc0!important}
+
+.page-hero{background:linear-gradient(135deg,#080b08,#172017 70%,#26341c)!important;color:#f5f8ef!important}
+.page-hero h1,.page-hero h2,.page-hero h3,.page-hero p,.page-hero li{color:inherit;text-shadow:0 2px 4px #0008}
+.page-hero .lead,.page-hero>p{color:#c2ccc0!important}
 .product-hero{background:linear-gradient(135deg,#d9f94c,#a9c52e)!important;color:#101411!important}
-.social a{color:var(--oba-lime)!important}
+.product-hero h1,.product-hero h2,.product-hero h3,.product-hero p,.product-hero li{color:#101411!important;text-shadow:0 1px 0 #ffffff55}
+.social a{color:var(--oba-lime)!important;text-shadow:0 1px 3px #0008}
 .oba-social-link{display:inline-flex;align-items:center;gap:8px}
 .oba-social-link svg{width:17px;height:17px}
 .oba-icon-label{font-size:0!important}
 .oba-icon-label:after{content:attr(aria-label);font-size:12px}
+
 @media(max-width:800px){
  .nav{min-height:76px;height:auto;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
  .nav .menu{display:block;order:2;margin-left:auto}
- .nav nav{display:none;order:4;width:100%;flex-direction:column;align-items:stretch;gap:0;padding-top:10px}
+ .nav nav{display:none;order:4;width:100%;flex-direction:column;align-items:stretch;gap:0;padding-top:10px;background:var(--oba-dark)!important}
  .nav nav.open{display:flex}
- .nav nav a{padding:12px 0;border-top:1px solid var(--oba-line)}
+ .nav nav a{padding:12px 0;border-top:1px solid var(--oba-line);color:#f5f8ef!important}
  .nav .nav-cta{order:3;font-size:12px;padding:9px 12px}
  .brand:before{width:40px;height:40px;flex-basis:40px}
- .footer .brand:before{width:44px;height:44px;flex-basis:44px}
+ .footer .brand:before,footer .brand:before{width:44px;height:44px;flex-basis:44px}
  .market-grid,.service-grid,.box-grid,.contact-grid,.work-grid,.two-col,.product-body,.free-box,.cta{grid-template-columns:1fr!important}
  .head{grid-template-columns:1fr;gap:20px}
  .why-grid{grid-template-columns:1fr 1fr}
  .why-grid>div{padding:22px 12px!important}
  .cta-actions{justify-content:flex-start}
- .footer{grid-template-columns:1fr!important}
- .footer>div:nth-child(2){justify-content:flex-start}
- .footer small{grid-column:auto}
+ .footer,footer{grid-template-columns:1fr!important}
+ .footer>div:nth-child(2),footer>.container>div:nth-child(2){justify-content:flex-start}
+ .footer small,footer small{grid-column:auto}
 }
 @media(max-width:480px){.why-grid{grid-template-columns:1fr}.hero{padding:55px 0}.section{padding:70px 0}.work-card strong{font-size:42px}}
