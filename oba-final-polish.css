@@ -1,37 +1,38 @@
-/* OBA final visual polish: balanced hero, real PNG logo, and stronger contrast. */
-:root{--oba-lime:#c9ff3d;--oba-aubergine:#8b5cf6}
+/* OBA contrast correction: keep navigation and light surfaces readable across devices. */
 
-/* Use the uploaded cropped PNG logo, not a renamed SVG reference. */
-.brand:before{background-image:url("assets/oba-logo.png")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;background-color:rgba(201,255,61,.08)!important;border-radius:50%!important}
+/* Navigation: light glass surface with unmistakable dark text and controls. */
+.nav,
+.nav nav,
+.nav nav.open{background:rgba(247,247,241,.97)!important;color:#171b19!important;border-color:rgba(23,27,25,.14)!important}
+.nav nav a,
+.nav nav.open a,
+.nav .nav-cta,
+.nav .menu{color:#171b19!important;text-shadow:none!important}
+.nav nav a{font-weight:650!important}
+.nav nav a:hover,
+.nav nav a.active{color:#648400!important}
+.nav .nav-cta{background:rgba(255,255,255,.72)!important;border-color:rgba(23,27,25,.28)!important}
+.nav .menu{background:transparent!important}
 
-/* Premium hero composition: let the uploaded image carry the visual while the copy sits in a balanced focal area. */
-.hero{position:relative!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;min-height:clamp(680px,86vh,900px)!important;padding:clamp(90px,10vw,150px) 0 clamp(70px,8vw,110px)!important;isolation:isolate!important;background:linear-gradient(90deg,rgba(5,7,10,.96) 0%,rgba(5,7,10,.78) 35%,rgba(5,7,10,.28) 68%,rgba(5,7,10,.12) 100%),url("assets/hero-background.png") 68% center/cover no-repeat!important}
-.hero:after{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none!important;background:radial-gradient(circle at 72% 34%,rgba(201,255,61,.18),transparent 28%),radial-gradient(circle at 78% 68%,rgba(139,92,246,.22),transparent 34%),linear-gradient(0deg,rgba(5,7,10,.88),transparent 42%)!important}
-.hero-copy{width:min(650px,100%)!important;position:relative!important;z-index:2!important;padding:0!important}
-.hero-copy .eyebrow{color:#d7e5ff!important;text-shadow:0 2px 14px #000!important}
-.hero h1{color:#fff!important;text-wrap:balance!important;text-shadow:0 4px 24px rgba(0,0,0,.62)!important}
-.hero h1 em{color:var(--oba-lime)!important;background:none!important;-webkit-text-fill-color:var(--oba-lime)!important;text-shadow:0 0 24px rgba(201,255,61,.3),0 3px 18px rgba(0,0,0,.6)!important}
-.hero-copy>p:not(.eyebrow){color:#f0f4ed!important;max-width:590px!important;font-size:clamp(16px,1.5vw,19px)!important;line-height:1.75!important;text-shadow:0 2px 14px rgba(0,0,0,.9)!important}
-.hero .proof{color:#eef4e8!important;text-shadow:0 2px 10px #000!important}
-.hero-visual{display:none!important}
-
-/* Make the first content section readable against the dark brand system. */
-#market,#work,.why{background:linear-gradient(180deg,#090d0d 0%,#0d1110 100%)!important;color:#f7faf4!important}
-#market .head h2,#work .head h2,.why .head h2{color:#fff!important;text-shadow:0 3px 18px rgba(0,0,0,.8)!important}
-#market .head h2 em,#work .head h2 em,.why .head h2 em{color:var(--oba-lime)!important;text-shadow:0 0 18px rgba(201,255,61,.22),0 3px 18px rgba(0,0,0,.75)!important}
-#market .head>p,#work .head>p,.why .head>p{color:#e1e9df!important;font-weight:500!important;line-height:1.75!important;text-shadow:0 2px 12px rgba(0,0,0,.9)!important}
-#market .kicker,#work .kicker,.why .kicker{color:var(--oba-lime)!important;text-shadow:0 0 12px rgba(201,255,61,.18)!important}
-
-/* Extra legibility for light text and lime accents throughout the homepage. */
-.section h2,.section h3,.section p,.section li{ text-shadow:0 2px 12px rgba(0,0,0,.22)}
-.free h2,.free h3,.free p,.free a{ text-shadow:0 1px 2px rgba(0,0,0,.24)!important}
-
-@media(max-width:700px){
-  .hero{min-height:calc(100svh - 76px)!important;align-items:center!important;padding:92px 0 64px!important;background-position:67% center!important;background-image:linear-gradient(180deg,rgba(5,7,10,.34) 0%,rgba(5,7,10,.46) 32%,rgba(5,7,10,.88) 72%,rgba(5,7,10,.98) 100%),url("assets/hero-background.png")!important}
-  .hero-copy{max-width:100%!important;padding:0!important;margin-top:20px!important}
-  .hero h1{font-size:clamp(43px,11.5vw,66px)!important;line-height:.98!important;letter-spacing:-.055em!important}
-  .hero-copy>p:not(.eyebrow){font-size:16px!important;line-height:1.65!important;margin:24px 0!important;max-width:100%!important}
-  .actions{gap:18px!important;flex-wrap:wrap!important}
-  .hero .btn{padding:16px 22px!important}
-  .hero .proof{gap:12px!important;font-size:9px!important}
+/* Ensure the mobile dropdown cannot inherit a dark background with dark text. */
+@media(max-width:800px){
+  .nav nav{background:#f7f7f1!important;border-top:1px solid rgba(23,27,25,.12)!important}
+  .nav nav a{color:#171b19!important;border-top:1px solid rgba(23,27,25,.12)!important}
+  .nav nav a:hover,.nav nav a.active{color:#648400!important;background:rgba(201,255,61,.16)!important}
 }
+
+/* Contrast guardrails for bright surfaces and cards. */
+#market,#work,.why,.cta{color:#171b19!important}
+#market h1,#market h2,#market h3,#market p,#market li,
+#work h1,#work h2,#work h3,#work p,#work li,
+.why h1,.why h2,.why h3,.why p,.why li,
+.cta h1,.cta h2,.cta h3,.cta p,.cta li{color:#171b19!important}
+#market .head>p,#work .head>p,.why .head>p,.cta p{color:#4f5b50!important}
+#market a:not(.btn),#work a:not(.btn),.why a:not(.btn),.cta a:not(.btn){color:#343d32!important}
+#market .kicker,#work .kicker,.why .kicker{color:#648400!important}
+
+/* Preserve intentional dark surfaces with light text. */
+.services,.footer,footer{color:#f8faf3!important}
+.services h1,.services h2,.services h3,.services p,.services li,.services a,
+.footer h1,.footer h2,.footer h3,.footer p,.footer li,footer h1,footer h2,footer h3,footer p,footer li,footer a{color:inherit!important}
+.services .head>p,.services p,.footer p,footer p{color:#d6d1e2!important}
