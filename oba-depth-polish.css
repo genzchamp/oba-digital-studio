@@ -1,0 +1,51 @@
+/* OBA depth polish: layered, tactile, premium surfaces instead of a flat black canvas. */
+:root{--oba-lime:#c9ff3d;--oba-aubergine:#7950c9;--oba-cream:#f4f3ed;--oba-ink:#171b19}
+
+html{background:var(--oba-cream)!important}
+body{background:radial-gradient(circle at 8% 8%,rgba(201,255,61,.13),transparent 28%),radial-gradient(circle at 92% 42%,rgba(121,80,201,.09),transparent 30%),var(--oba-cream)!important;color:var(--oba-ink)!important}
+
+.nav{background:rgba(247,247,241,.84)!important;color:var(--oba-ink)!important;border-bottom:1px solid rgba(20,25,20,.1)!important;box-shadow:0 8px 35px rgba(24,29,22,.08)!important;backdrop-filter:blur(24px)!important}
+.nav nav a,.nav-cta,.brand{color:var(--oba-ink)!important;text-shadow:none!important}
+.nav-cta{border-color:rgba(23,27,25,.22)!important;background:rgba(255,255,255,.4)!important}
+.menu{color:var(--oba-ink)!important;text-shadow:none!important}
+
+/* Keep the hero cinematic, but soften the transition into the rest of the page. */
+.hero{border-radius:0 0 42px 42px!important;box-shadow:0 24px 70px rgba(18,24,15,.16)!important}
+.ticker{background:linear-gradient(90deg,#c9ff3d 0%,#e9ff9c 48%,#d9c4ff 100%)!important;color:#20251c!important;box-shadow:0 8px 28px rgba(65,76,35,.12)!important}
+
+/* Light, dimensional marketplace and portfolio surfaces. */
+#market,#work,.why{background:linear-gradient(145deg,rgba(255,255,252,.94),rgba(232,237,224,.78))!important;color:var(--oba-ink)!important;border-radius:42px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 18px 55px rgba(31,42,27,.06)!important}
+#market .head h2,#work .head h2,.why .head h2{color:#171b19!important;text-shadow:0 1px 0 rgba(255,255,255,.8)!important}
+#market .head h2 em,#work .head h2 em,.why .head h2 em{color:#6e45b8!important;text-shadow:0 1px 0 rgba(255,255,255,.9)!important}
+#market .head>p,#work .head>p,.why .head>p{color:#4f5b50!important;text-shadow:none!important}
+#market .kicker,#work .kicker,.why .kicker{color:#648400!important;text-shadow:none!important}
+
+.product,.work-card,.service-card,.contact-card,.box,.cta{border-radius:24px!important;box-shadow:0 12px 28px rgba(29,39,25,.08),0 2px 4px rgba(29,39,25,.04)!important}
+.product:hover,.work-card:hover,.service-card:hover,.contact-card:hover{box-shadow:0 24px 55px rgba(29,39,25,.16),0 4px 10px rgba(29,39,25,.06)!important}
+.product{background:rgba(255,255,252,.96)!important;border:1px solid rgba(30,44,27,.1)!important}
+.pbody h3{color:#171b19!important}
+.pbody p{color:#5b665b!important}
+
+/* A rich aubergine section instead of a flat black block. */
+.services{background:radial-gradient(circle at 88% 12%,rgba(201,255,61,.15),transparent 24%),linear-gradient(135deg,#282238 0%,#17151f 52%,#252d20 100%)!important;color:#f8faf3!important;border-radius:42px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 55px rgba(30,20,45,.18)!important}
+.services .head>p{color:#d6d1e2!important}
+.service-list{border-top-color:rgba(255,255,255,.18)!important}
+.service-list a{border-bottom-color:rgba(255,255,255,.14)!important}
+.service-list p{color:#c1baca!important}
+.service-list a:hover{color:var(--oba-lime)!important}
+
+.free{background:linear-gradient(135deg,#c9ff3d 0%,#e6ff8c 56%,#d8c6f7 100%)!important;border-radius:42px!important;box-shadow:0 18px 55px rgba(91,105,37,.14)!important}
+.free p{color:#38432c!important}
+
+.cta{background:linear-gradient(135deg,#ffffff 0%,#f0f4e9 68%,#eee5ff 100%)!important;border:1px solid rgba(35,45,30,.1)!important;box-shadow:0 24px 70px rgba(30,42,25,.1)!important}
+
+.footer,footer{background:linear-gradient(135deg,#211b2d,#121812)!important;box-shadow:0 -15px 50px rgba(28,20,40,.14)!important}
+
+.section h2,.section h3,.section p,.section li{ text-shadow:none!important }
+
+@media(max-width:700px){
+  .hero{border-radius:0 0 28px 28px!important}
+  #market,#work,.why,.services,.free{border-radius:28px!important}
+  .section{padding:84px 0!important}
+  .product,.work-card,.service-card,.contact-card,.box,.cta{border-radius:20px!important}
+}
