@@ -19,7 +19,11 @@
     'ai-automation-kit':"Hi OBA Digital Studio, I'd like to ask about the AI Automation Starter Kit. Please send me the payment and delivery details.",
     'brand-starter':"Hi OBA Digital Studio, I'd like to ask about the Brand Starter System. Please send me the payment and delivery details."
   };
-  const productLinks={'chatgpt-prompts':'https://selar.com/r49h8528sq','build-website':'https://selar.com/89p696690n'};
+  const productLinks={
+    'chatgpt-prompts':'https://selar.com/r49h8528sq',
+    'build-website':'https://selar.com/89p696690n',
+    'social-content':'https://selar.com/gx0w8o1576'
+  };
   const serviceAliases={'Website Design & Development':'websites','AI Automation':'ai-automation','Branding & Visual Identity':'branding','Social Media Management':'social-media','Digital Product Creation':'digital-products','Digital Strategy & Setup':'digital-strategy'};
   const getMessage=(key)=>messages[key]||messages.general;
   const productKey=(value)=>({'ChatGPT Prompt Vault':'chatgpt-prompts','Create Your Own Website in Minutes':'build-website','Social Content Engine':'social-content','Digital Launch Kit':'launch-kit','AI Automation Starter Kit':'ai-automation-kit','Brand Starter System':'brand-starter'}[value]||value||'general');
