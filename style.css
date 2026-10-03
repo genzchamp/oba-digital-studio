@@ -31,3 +31,8 @@ h1,h2,h3{font-family:Manrope,sans-serif;margin:0;line-height:1.03;letter-spacing
 .page-hero{box-shadow:inset 0 -80px 100px #0002}.product-body .box{border-radius:24px;box-shadow:0 25px 70px #0002}.contact-card,.service-card,.box{border-radius:20px}
 @media(max-width:800px){.hero-visual:after{inset:4% -7% 4%}.hero-card{width:270px;height:330px}.hero-card strong{font-size:40px}.art{min-height:270px;height:270px}}
 @media(max-width:520px){.hero-visual{min-height:390px}.hero-visual:after{inset:0 -12% 2%;opacity:.9}.hero-card{width:235px;height:300px}.hero-card strong{font-size:34px}.float{width:160px;padding:15px}.art{min-height:285px;height:285px}.pbody{min-height:0}}
+
+/* Fast local brand logo */
+.brand img{display:block;width:auto;height:42px;max-width:180px;object-fit:contain;flex:0 0 auto}
+.brand .brand-fallback{display:none}
+@media(max-width:520px){.brand img{height:38px;max-width:155px}}
