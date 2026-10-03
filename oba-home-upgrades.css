@@ -38,3 +38,13 @@ body{background:#080a0d;color:#f7f8fb}
   .hero-copy{padding-top:245px}
   .hero h1 em{display:inline;color:var(--oba-lime)!important;background:none!important;-webkit-text-fill-color:var(--oba-lime)!important}
 }
+
+
+/* Use the uploaded transparent OBA Digital Studio logo everywhere. */
+.brand::before{background-image:url("assets/oba-digital-studio.png")!important;background-color:transparent!important;border-radius:0!important;filter:none!important;width:118px!important;height:54px!important;flex-basis:118px!important}
+.brand b,.brand span{display:none!important}
+.footer .brand::before{width:128px!important;height:56px!important;flex-basis:128px!important}
+@media(max-width:700px){
+  .brand::before{width:108px!important;height:50px!important;flex-basis:108px!important}
+  .footer .brand::before{width:118px!important;height:52px!important;flex-basis:118px!important}
+}
