@@ -42,3 +42,12 @@ h1,h2,h3{font-family:Manrope,sans-serif;margin:0;line-height:1.03;letter-spacing
   .brand::before{width:108px!important;height:50px!important;flex-basis:108px!important}
   .footer .brand::before,footer .brand::before{width:118px!important;height:52px!important;flex-basis:118px!important}
 }
+
+
+/* Final sitewide header treatment — dark premium header so the official light logo stays crisp. */
+.nav{background:#101210!important;color:#f5f8ef!important;border-bottom:1px solid #303a2f!important;box-shadow:0 8px 28px #0002!important}
+.nav nav a,.nav-cta,.brand{color:#f5f8ef!important}
+.nav nav a:hover,.nav nav a.active{color:#d9f94c!important}
+.nav-cta{border-color:#78866f!important;background:#101610!important}
+.nav-cta:hover{background:#d9f94c!important;color:#101411!important}
+@media(max-width:800px){.nav nav.open{background:#101210!important;border-bottom:1px solid #303a2f!important;box-shadow:0 18px 35px #0006!important}.nav nav.open a{color:#f5f8ef!important;border-bottom-color:#303a2f!important}.menu{color:#f5f8ef!important}}
