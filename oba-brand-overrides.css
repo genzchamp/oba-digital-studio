@@ -4,3 +4,13 @@
 .footer .brand::before{width:52px;height:52px;flex-basis:52px}
 .brand b,.brand span{display:none}
 @media(max-width:700px){.brand::before{width:40px;height:40px;flex-basis:40px}}
+
+
+/* Uploaded transparent OBA Digital Studio wordmark. */
+.brand::before{width:118px!important;height:54px!important;flex-basis:118px!important;background:url("assets/oba-digital-studio.png") center/contain no-repeat!important;border-radius:0!important;filter:none!important}
+.brand b,.brand span{display:none!important}
+.footer .brand::before{width:128px!important;height:56px!important;flex-basis:128px!important}
+@media(max-width:700px){
+  .brand::before{width:108px!important;height:50px!important;flex-basis:108px!important}
+  .footer .brand::before{width:118px!important;height:52px!important;flex-basis:118px!important}
+}
