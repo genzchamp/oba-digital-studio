@@ -31,3 +31,14 @@ h1,h2,h3{font-family:Manrope,sans-serif;margin:0;line-height:1.03;letter-spacing
 .page-hero{box-shadow:inset 0 -80px 100px #0002}.product-body .box{border-radius:24px;box-shadow:0 25px 70px #0002}.contact-card,.service-card,.box{border-radius:20px}
 @media(max-width:800px){.hero-visual:after{inset:4% -7% 4%}.hero-card{width:270px;height:330px}.hero-card strong{font-size:40px}.art{min-height:270px;height:270px}}
 @media(max-width:520px){.hero-visual{min-height:390px}.hero-visual:after{inset:0 -12% 2%;opacity:.9}.hero-card{width:235px;height:300px}.hero-card strong{font-size:34px}.float{width:160px;padding:15px}.art{min-height:285px;height:285px}.pbody{min-height:0}}
+
+
+/* Official OBA Digital Studio transparent wordmark — keep this as the final brand layer. */
+.brand{display:flex!important;align-items:center!important;gap:0!important;min-height:50px!important;background:transparent!important;padding:0!important;border:0!important;box-shadow:none!important}
+.brand::before{content:""!important;display:block!important;width:118px!important;height:54px!important;flex:0 0 118px!important;background:url("assets/oba-digital-studio.png") center/contain no-repeat!important;border-radius:0!important;filter:none!important}
+.brand b,.brand span{display:none!important}
+.footer .brand::before,footer .brand::before{width:128px!important;height:56px!important;flex-basis:128px!important}
+@media(max-width:700px){
+  .brand::before{width:108px!important;height:50px!important;flex-basis:108px!important}
+  .footer .brand::before,footer .brand::before{width:118px!important;height:52px!important;flex-basis:118px!important}
+}
