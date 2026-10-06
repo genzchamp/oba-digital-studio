@@ -51,3 +51,5 @@ h1,h2,h3{font-family:Manrope,sans-serif;margin:0;line-height:1.03;letter-spacing
 .nav-cta{border-color:#78866f!important;background:#101610!important}
 .nav-cta:hover{background:#d9f94c!important;color:#101411!important}
 @media(max-width:800px){.nav nav.open{background:#101210!important;border-bottom:1px solid #303a2f!important;box-shadow:0 18px 35px #0006!important}.nav nav.open a{color:#f5f8ef!important;border-bottom-color:#303a2f!important}.menu{color:#f5f8ef!important}}
+
+/* Pages deployment refresh: 2026-10-06 */
