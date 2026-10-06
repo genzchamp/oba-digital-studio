@@ -53,3 +53,56 @@ h1,h2,h3{font-family:Manrope,sans-serif;margin:0;line-height:1.03;letter-spacing
 @media(max-width:800px){.nav nav.open{background:#101210!important;border-bottom:1px solid #303a2f!important;box-shadow:0 18px 35px #0006!important}.nav nav.open a{color:#f5f8ef!important;border-bottom-color:#303a2f!important}.menu{color:#f5f8ef!important}}
 
 /* Pages deployment refresh: 2026-10-06 */
+
+/* FINAL NAV PRESENTATION — keep navigation inside the dark header */
+html body header.nav nav{
+  background:transparent!important;
+  background-color:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:24px!important;
+}
+html body header.nav nav a{
+  background:transparent!important;
+  background-color:transparent!important;
+  color:#f5f8ef!important;
+  border:0!important;
+  box-shadow:none!important;
+  text-decoration:none!important;
+  padding:0!important;
+  white-space:nowrap!important;
+}
+html body header.nav nav a:hover,html body header.nav nav a.active{
+  color:#d9f94c!important;
+  background:transparent!important;
+}
+html body header.nav .menu{
+  background:transparent!important;
+  background-color:transparent!important;
+  color:#d9f94c!important;
+  border:0!important;
+  box-shadow:none!important;
+  padding:6px!important;
+}
+@media(max-width:800px){
+  html body header.nav nav{display:none!important;}
+  html body header.nav nav.open{
+    display:flex!important;
+    background:#101210!important;
+    background-color:#101210!important;
+    border-top:1px solid #303a2f!important;
+    border-bottom:1px solid #303a2f!important;
+    box-shadow:0 18px 35px rgba(0,0,0,.38)!important;
+    padding:10px 4%!important;
+    gap:0!important;
+  }
+  html body header.nav nav.open a{
+    color:#f5f8ef!important;
+    background:transparent!important;
+    padding:14px 0!important;
+    border-bottom:1px solid #303a2f!important;
+  }
+  html body header.nav nav.open a:hover,html body header.nav nav.open a.active{color:#d9f94c!important;}
+}
