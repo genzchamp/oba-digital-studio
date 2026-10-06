@@ -106,3 +106,30 @@ html body header.nav .menu{
   }
   html body header.nav nav.open a:hover,html body header.nav nav.open a.active{color:#d9f94c!important;}
 }
+
+/* FINAL STICKY NAV — accessible while scrolling on every device */
+html body header.nav{
+  position:sticky!important;
+  top:0!important;
+  z-index:1000!important;
+  width:100%!important;
+  box-sizing:border-box!important;
+  isolation:isolate!important;
+}
+html body header.nav .menu,
+html body header.nav nav,
+html body header.nav .nav-cta,
+html body header.nav .brand{
+  position:relative;
+  z-index:1001!important;
+}
+@media(max-width:800px){
+  html body header.nav .menu{
+    display:block!important;
+    position:relative!important;
+    z-index:1003!important;
+  }
+  html body header.nav nav.open{
+    z-index:1002!important;
+  }
+}
