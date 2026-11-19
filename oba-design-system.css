@@ -608,3 +608,30 @@ section.cta h2::before,section.cta h2::after{
 section .head h2,section .free-box h2,section.cta h2{
   text-shadow:none!important;background-image:none!important;
 }
+
+
+/* Final homepage correction: remove the legacy 245px mobile hero offset. */
+@media(max-width:760px){
+  body.home .hero-copy,.hero.container .hero-copy{padding-top:0!important;margin-top:0!important}
+  body.home .hero.container,.hero.container{padding-top:10px!important}
+}
+@media(max-width:390px){
+  body.home .hero.container,.hero.container{padding-top:8px!important}
+}
+/* Keep each homepage section title as a single clean text layer. */
+body.home section .head h2,
+body.home section .free-box h2,
+body.home section.cta h2{
+  -webkit-text-stroke:0 transparent!important;
+  text-shadow:none!important;
+  filter:none!important;
+}
+body.home section .head h2::before,
+body.home section .head h2::after,
+body.home section .free-box h2::before,
+body.home section .free-box h2::after,
+body.home section.cta h2::before,
+body.home section.cta h2::after{
+  content:normal!important;
+  display:none!important;
+}
