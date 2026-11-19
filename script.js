@@ -34,7 +34,19 @@
   function cleanSocialLabels(){document.querySelectorAll('a[href*="tiktok.com"],a[href*="snapchat.com"]').forEach(link=>{const isTikTok=link.href.toLowerCase().includes('tiktok.com');link.textContent=isTikTok?'TikTok':'Snapchat';link.setAttribute('aria-label',isTikTok?'TikTok profile':'Snapchat profile');link.classList.add('oba-social-link');link.target='_blank';link.rel='noopener'})}
   function hidePhoneText(){const phone=/\+?234[\s-]?812[\s-]?395[\s-]?8585|0812[\s-]?395[\s-]?8585/g;const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{if(phone.test(node.nodeValue))node.nodeValue=node.nodeValue.replace(phone,'');phone.lastIndex=0})}
   function replaceHomepageWork(){const grid=document.querySelector('#work .work-grid');if(!grid||grid.dataset.obaWorkUpdated==='true')return;grid.dataset.obaWorkUpdated='true';const cards=[['dark','AGRICULTURE / AGRITECH','OBA<br>AGROTECH','Digital platform · Website','case-study-oba-agrotech.html'],['tech','GAMING / ENTERTAINMENT','ABD<br>GAMES','Gaming website · Interactive concept','case-study-abd-games.html'],['gold','TECH / GADGETS',"FREEMAN'S<br>GADGET",'Gadget storefront · E-commerce demo','case-study-freemans-gadget.html'],['pink','FASHION / HANDMADE CRAFT','PERERAT<br><i>CROCHET</i>','Handmade brand · Product showcase','case-study-pererat-crochet.html']];grid.innerHTML=cards.map(([tone,label,title,desc,url])=>`<a class="work-card ${tone}" href="${url}"><div><small>${label}</small><strong>${title}</strong><span>${desc}</span></div><footer>View case study ↗</footer></a>`).join('')}
-  function addDesignSystemLast(){if(document.querySelector('link[data-oba-design-system]'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='oba-design-system.css?v=3';link.dataset.obaDesignSystem='true';document.head.appendChild(link)}
-  function run(){addStylesheet();addDesignSystemLast();addFavicon();configureNav();configureWhatsApp();cleanSocialLabels();hidePhoneText()}
+  function addDesignSystemLast(){if(document.querySelector('link[data-oba-design-system]'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='oba-design-system.css?v=4';link.dataset.obaDesignSystem='true';document.head.appendChild(link)}
+  function addFloatingWhatsApp(){
+    document.querySelectorAll('.nav .nav-cta').forEach(link=>link.remove());
+    if(document.querySelector('.oba-floating-whatsapp'))return;
+    const link=document.createElement('a');
+    link.className='oba-floating-whatsapp';
+    link.href=wa(messages.general);
+    link.target='_blank';
+    link.rel='noopener';
+    link.setAttribute('aria-label','Message OBA Digital Studio on WhatsApp');
+    link.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 11.7a8.2 8.2 0 0 1-12.1 7.2L3 20l1.2-4.8a8.2 8.2 0 1 1 16-3.5Z"/><path d="M8.2 8.1c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4 0 .6l-.6.8c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.4 2.3.3.2.5.2.7 0l.9-1c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.1-.7 1.5-.5.5-1.2.7-2 .6-1.2-.2-2.6-.8-4.1-2.2-1.7-1.5-2.5-3.2-2.8-4.3-.2-.8 0-1.5.4-1.8Z"/></svg><span>Message us</span>';
+    document.body.appendChild(link);
+  }
+  function run(){addStylesheet();addDesignSystemLast();addFavicon();configureNav();configureWhatsApp();cleanSocialLabels();hidePhoneText();addFloatingWhatsApp()}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
