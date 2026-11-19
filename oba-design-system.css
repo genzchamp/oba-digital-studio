@@ -171,3 +171,5 @@ html body footer,.footer{
 .showcase-bottom strong i{color:var(--oba-lime)!important;font-style:normal}
 .showcase-bottom>span{max-width:130px;color:#c2cbbb;font-size:10px;line-height:1.45;text-align:right}
 @media(max-width:760px){.hero-shot{height:150px}.hero-showcase{height:300px!important}.showcase-bottom strong{font-size:23px!important}}
+
+.hero-showcase:after{display:none!important}
