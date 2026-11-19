@@ -159,3 +159,15 @@ html body footer,.footer{
 .service-list a{grid-template-columns:minmax(0,1fr) 45px!important;gap:24px!important}
 .service-list a>div{grid-column:1}
 .service-list a>span{grid-column:2;grid-row:1;justify-self:end}
+
+/* Real product proof in the hero — replace decorative AI-style artwork */
+.hero-showcase{display:flex!important;flex-direction:column!important;justify-content:space-between!important;gap:15px!important;padding:22px!important;transform:none!important}
+.showcase-top{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#cbd3c4}
+.showcase-top small{font-size:9px!important;letter-spacing:.13em!important}
+.showcase-top span{font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--oba-lime)}
+.hero-shot{display:block;width:100%;height:190px;object-fit:contain;object-position:center;background:#edf0e8;border:1px solid rgba(255,255,255,.12);border-radius:10px}
+.showcase-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+.showcase-bottom strong{font-size:clamp(21px,2.5vw,29px)!important;line-height:1.06!important;letter-spacing:-.055em!important}
+.showcase-bottom strong i{color:var(--oba-lime)!important;font-style:normal}
+.showcase-bottom>span{max-width:130px;color:#c2cbbb;font-size:10px;line-height:1.45;text-align:right}
+@media(max-width:760px){.hero-shot{height:150px}.hero-showcase{height:300px!important}.showcase-bottom strong{font-size:23px!important}}
