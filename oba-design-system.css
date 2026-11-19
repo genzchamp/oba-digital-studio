@@ -699,3 +699,63 @@ body.home .hero-copy .actions .btn .oba-cta-letter{
 @media(prefers-reduced-motion:reduce){
   body.home .hero-copy .actions .btn .oba-cta-letter{animation:none!important;opacity:1!important;transform:none!important}
 }
+
+
+/* Homepage hero correction: target the actual homepage body (id=top).
+   The document has no body.home class, so earlier hero/CTA rules never matched. */
+@media (min-width:761px){
+  body#top .hero.container{
+    min-height:650px!important;
+    align-items:stretch!important;
+  }
+  body#top .hero-copy{
+    min-height:500px!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  body#top .hero-copy .actions{
+    margin-top:auto!important;
+    padding-top:34px!important;
+  }
+}
+@media (max-width:760px){
+  body#top .hero.container{
+    min-height:min(760px,calc(100svh - 82px))!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    padding:18px 21px 24px!important;
+  }
+  body#top .hero-copy{
+    display:flex!important;
+    flex:1 1 auto!important;
+    flex-direction:column!important;
+    min-height:calc(min(760px,100svh - 82px) - 42px)!important;
+    height:auto!important;
+  }
+  body#top .hero-copy .actions{
+    margin-top:auto!important;
+    padding-top:32px!important;
+  }
+}
+@media(max-width:390px){
+  body#top .hero-copy{min-height:calc(min(760px,100svh - 82px) - 42px)!important}
+}
+/* Improve description contrast on the pale Free Lab surface and product cards. */
+body#top .free .free-box>div>p:not(.kicker){
+  color:#354034!important;
+  opacity:1!important;
+}
+body#top .free-list a:not(.btn){
+  color:#263126!important;
+}
+body#top #market .pbody p{
+  color:#4b554b!important;
+  opacity:1!important;
+}
+body#top #market .pbody>span{
+  color:#687365!important;
+}
+body#top .learning-paths .head>p,
+body#top #work .head>p{
+  color:#4e584e!important;
+}
