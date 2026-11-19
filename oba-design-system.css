@@ -565,3 +565,46 @@ body.home .hero.container, .hero.container{
   .hero.container{padding:32px 17px 30px!important}
   .hero-copy h1{font-size:35px!important}
 }
+
+
+/* Refinement: tighten hero-to-navigation spacing and balance the brand mark */
+@media(min-width:761px){
+  html body header.nav .brand,html body header.nav .brand:hover{
+    width:82px!important;min-width:82px!important;height:46px!important;min-height:46px!important;
+  }
+  html body header.nav .brand:before{
+    width:82px!important;height:46px!important;flex-basis:82px!important;
+  }
+  .hero.container{
+    padding-top:46px!important;padding-bottom:72px!important;
+  }
+}
+@media(max-width:760px){
+  html body header.nav .brand,html body header.nav .brand:hover{
+    width:87px!important;min-width:87px!important;height:44px!important;min-height:44px!important;
+  }
+  html body header.nav .brand:before{
+    width:87px!important;height:44px!important;flex-basis:87px!important;
+  }
+  .hero.container{
+    padding-top:18px!important;padding-bottom:28px!important;
+  }
+}
+@media(max-width:390px){
+  html body header.nav .brand,html body header.nav .brand:hover{
+    width:76px!important;min-width:76px!important;height:42px!important;min-height:42px!important;
+  }
+  html body header.nav .brand:before{
+    width:76px!important;height:42px!important;flex-basis:76px!important;
+  }
+  .hero.container{padding-top:15px!important}
+}
+/* Ensure section titles render once, without inherited decorative duplicates */
+section .head h2::before,section .head h2::after,
+section .free-box h2::before,section .free-box h2::after,
+section.cta h2::before,section.cta h2::after{
+  content:none!important;display:none!important;
+}
+section .head h2,section .free-box h2,section.cta h2{
+  text-shadow:none!important;background-image:none!important;
+}
