@@ -333,3 +333,71 @@ body,body *{text-shadow:none!important}
  .steps .step h3{font-size:19px!important;margin:0 0 5px!important}
  .steps .step p{font-size:13px!important;line-height:1.55!important;color:#d1d7ce!important}
 }
+
+
+/* MOBILE HERO + HEADER CONTACT REFINEMENT */
+@media(max-width:760px){
+  /* The about-page hero should be a full-width stage, not a tall inset panel. */
+  html body .hero.page-hero{
+    width:100%!important;max-width:none!important;min-height:0!important;
+    margin:0!important;padding:38px 0 44px!important;
+    border-radius:0!important;box-shadow:none!important;
+    background:
+      radial-gradient(ellipse at 88% 18%,rgba(201,255,61,.13),transparent 34%),
+      linear-gradient(145deg,#171d19 0%,#202522 58%,#292238 100%)!important;
+    color:#f7f8f3!important;overflow:hidden!important;
+  }
+  html body .hero.page-hero:after{display:none!important}
+  .hero.page-hero .container{width:calc(100% - 40px)!important;max-width:620px!important;margin-inline:auto!important}
+  .hero.page-hero .eyebrow{color:#d9ef78!important;font-size:10px!important;letter-spacing:.13em!important;margin:0 0 16px!important}
+  .hero.page-hero h1{max-width:100%!important;margin:0 0 18px!important;font-size:clamp(37px,9.5vw,48px)!important;line-height:1.04!important;letter-spacing:-.055em!important;color:#fff!important;text-wrap:balance!important}
+  .hero.page-hero h1 em{color:#d9ef78!important}
+  .hero.page-hero .lead,.hero.page-hero p:not(.eyebrow){
+    max-width:100%!important;margin:0!important;color:#d5ddd3!important;
+    font-size:15px!important;line-height:1.65!important;font-weight:450!important;
+    text-shadow:none!important;
+  }
+  /* Keep the six marketplace tiles legible and compact on a phone. */
+  .market-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .market-grid .product{min-width:0!important;display:flex!important;flex-direction:column!important}
+  .market-grid .art{height:138px!important;min-height:138px!important;padding:12px!important}
+  .market-grid .art strong{font-size:clamp(17px,5vw,22px)!important;line-height:.95!important;letter-spacing:-.045em!important}
+  .market-grid .pbody{padding:12px!important}
+  .market-grid .pbody h3{font-size:15px!important;line-height:1.15!important}
+  .market-grid .pbody p{font-size:11px!important;line-height:1.45!important}
+  html body header.nav{gap:12px!important}
+  .nav .brand{width:112px!important;min-width:112px!important;height:48px!important;min-height:48px!important}
+  .nav .brand:before{width:112px!important;height:48px!important;flex-basis:112px!important}
+  .nav .nav-cta{display:none!important}
+}
+@media(max-width:390px){
+  .hero.page-hero{padding-top:32px!important;padding-bottom:38px!important}
+  .hero.page-hero .container{width:calc(100% - 32px)!important}
+  .hero.page-hero h1{font-size:36px!important}
+  .market-grid{gap:8px!important}
+  .market-grid .art{height:126px!important;min-height:126px!important}
+  .market-grid .pbody{padding:10px!important}
+  .nav .brand{width:100px!important;min-width:100px!important}
+  .nav .brand:before{width:100px!important;flex-basis:100px!important}
+}
+@media(min-width:761px){
+  .nav .brand{width:116px!important;min-width:116px!important;height:50px!important;min-height:50px!important}
+  .nav .brand:before{width:116px!important;height:50px!important;flex-basis:116px!important}
+  .nav .nav-cta{display:none!important}
+}
+.oba-floating-whatsapp{
+  position:fixed!important;right:max(22px,env(safe-area-inset-right))!important;
+  bottom:max(22px,env(safe-area-inset-bottom))!important;z-index:2000!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;
+  min-height:54px!important;padding:0 19px!important;border:1px solid rgba(255,255,255,.28)!important;
+  border-radius:999px!important;background:#20bd5a!important;color:#fff!important;
+  box-shadow:0 12px 34px rgba(9,90,43,.28),0 3px 10px rgba(0,0,0,.16)!important;
+  font:650 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  text-decoration:none!important;letter-spacing:0!important;white-space:nowrap!important;
+  transition:transform .2s ease,box-shadow .2s ease!important;
+}
+.oba-floating-whatsapp:hover{transform:translateY(-3px)!important;box-shadow:0 16px 38px rgba(9,90,43,.34)!important}
+.oba-floating-whatsapp svg{width:21px!important;height:21px!important;flex:0 0 21px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+@media(max-width:760px){
+ .oba-floating-whatsapp{right:16px!important;bottom:max(16px,env(safe-area-inset-bottom))!important;min-height:50px!important;padding:0 16px!important;font-size:12px!important}
+}
