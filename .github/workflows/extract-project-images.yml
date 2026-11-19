@@ -1,0 +1,34 @@
+name: Extract OBA project screenshots
+on:
+  push:
+    paths:
+      - 'oba-project-images.zip'
+      - '.github/workflows/extract-project-images.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Extract image archive
+        run: |
+          mkdir -p assets/portfolio
+          unzip -o oba-project-images.zip -d /tmp/oba-project-images
+          find /tmp/oba-project-images -type f \\( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.avif' \\) -print0 | while IFS= read -r -d '' file; do
+            cp "$file" "assets/portfolio/$(basename "$file")"
+          done
+          echo "Extracted image files:"
+          find assets/portfolio -maxdepth 1 -type f -printf '%f (%s bytes)\\n' | sort
+          test "$(find assets/portfolio -maxdepth 1 -type f | wc -l)" -gt 0
+      - name: Commit extracted screenshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/portfolio
+          git diff --cached --quiet || git commit -m "Extract OBA project portfolio screenshots"
+          git push
