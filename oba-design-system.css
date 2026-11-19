@@ -173,3 +173,7 @@ html body footer,.footer{
 @media(max-width:760px){.hero-shot{height:150px}.hero-showcase{height:300px!important}.showcase-bottom strong{font-size:23px!important}}
 
 .hero-showcase:after{display:none!important}
+
+/* Remove decorative ordinal labels; keep the content itself prominent */
+.why-grid b{display:none!important}
+.why-grid h3{margin:0 0 10px!important}
