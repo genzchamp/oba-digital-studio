@@ -1,0 +1,22 @@
+/* OBA learning and real-project portfolio layer */
+.learning-paths{padding-top:90px}
+.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.path-grid>a{display:flex;flex-direction:column;gap:14px;min-height:260px;padding:28px;background:#141914;color:#f5f8ef;text-decoration:none;border:1px solid #303a2f;border-radius:18px;transition:.25s}
+.path-grid>a:hover{transform:translateY(-5px);border-color:#d9f94c}
+.path-grid>a>span,.portfolio-card span{font-size:10px;letter-spacing:1.5px;font-weight:800;color:#a7c23a}
+.path-grid h3{font-size:27px;color:#f5f8ef}
+.path-grid p{color:#b8c0b4;font-size:14px;line-height:1.65}
+.path-grid b{margin-top:auto;color:#d9f94c;font-size:13px}
+.learning-note{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:18px;padding:20px 24px;background:#e9eddd;border-radius:12px}
+.learning-note strong{font-family:Manrope,sans-serif}.learning-note span{font-size:13px;color:#60675b}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.portfolio-card{display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #e0e2d9;border-radius:16px;color:#111;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.portfolio-card:hover{transform:translateY(-5px);box-shadow:0 18px 48px #0002}
+.portfolio-card img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;background:#e8eae3}
+.portfolio-card>div{display:flex;flex-direction:column;gap:10px;padding:22px;flex:1}
+.portfolio-card h3{font-size:24px}
+.portfolio-card p{margin:0;color:#62675f;font-size:13px;line-height:1.65}
+.portfolio-card b{margin-top:auto;padding-top:8px;font-size:12px}
+.portfolio-footnote{margin-top:22px;color:#777;font-size:12px}
+@media(max-width:850px){.portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.path-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.portfolio-grid,.path-grid{grid-template-columns:1fr}.learning-note{align-items:flex-start;flex-direction:column}.portfolio-card img{aspect-ratio:16/11}}
