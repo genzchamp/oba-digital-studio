@@ -154,3 +154,8 @@ html body footer,.footer{
 .free-list{border-color:#c8d1bd!important}
 .free-list span,.free-list a:not(.btn){border-color:#c8d1bd!important;color:#333c31!important}
 .cta{border:1px solid var(--oba-line)!important;border-radius:22px!important;box-shadow:0 12px 38px rgba(27,35,27,.045)!important}
+
+/* Service links use content hierarchy, not decorative numbering */
+.service-list a{grid-template-columns:minmax(0,1fr) 45px!important;gap:24px!important}
+.service-list a>div{grid-column:1}
+.service-list a>span{grid-column:2;grid-row:1;justify-self:end}
