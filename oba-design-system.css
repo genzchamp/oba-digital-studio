@@ -1,5 +1,5 @@
 /* OBA Digital Studio — unified visual system, 2026 */
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
+
 :root{
  --oba-charcoal:#202522;--oba-charcoal-2:#292f2b;--oba-paper:#f5f6f2;--oba-white:#fff;
  --oba-ink:#171b18;--oba-muted:#69716a;--oba-line:#e0e4dc;--oba-lime:#d9ef78;
@@ -137,3 +137,20 @@ html body footer,.footer{
 .portfolio-grid{gap:18px}
 .portfolio-card img{aspect-ratio:16/10;object-fit:cover}
 .footer{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+
+/* Restrained section palette: charcoal feature band, soft sage resource band */
+.orb{width:390px!important;height:390px!important;background:radial-gradient(circle,#e8ecdf 0%,#f0f2eb 58%,transparent 72%)!important;filter:none!important}
+.hero-card{transform:none!important}
+.hero-card:after{border-color:rgba(217,239,120,.24)!important;box-shadow:0 0 0 25px rgba(217,239,120,.035),0 0 0 55px rgba(217,239,120,.02)!important}
+.float{right:0!important;bottom:30px!important;border-radius:14px!important}
+.ticker{background:#e9ede2!important;color:#566246!important;padding:13px 0!important}
+.section.services{background:#252b27!important;color:#f5f7f1!important}
+.services .head>p{color:#b6beb2!important}
+.service-list{border-color:rgba(255,255,255,.16)!important}
+.service-list a{border-color:rgba(255,255,255,.13)!important}
+.service-list p{color:#b5beb2!important}
+.service-list b{border-color:rgba(217,239,120,.38)!important;color:var(--oba-lime)!important}
+.section.free{background:#e9ede2!important;color:var(--oba-ink)!important}
+.free-list{border-color:#c8d1bd!important}
+.free-list span,.free-list a:not(.btn){border-color:#c8d1bd!important;color:#333c31!important}
+.cta{border:1px solid var(--oba-line)!important;border-radius:22px!important;box-shadow:0 12px 38px rgba(27,35,27,.045)!important}
