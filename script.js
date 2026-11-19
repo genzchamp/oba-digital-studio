@@ -37,11 +37,11 @@ function configureWhatsApp(){
  document.querySelectorAll('[data-wa-message]').forEach(link=>{link.href=wa(link.dataset.waMessage);link.target='_blank';link.rel='noopener'});
 }
 function addDesignSystemLast(){
- if(document.querySelector('link[data-oba-design-system]'))return;
+ if(document.querySelector('link[href*="oba-design-system.css"]'))return;
  const link=document.createElement('link');link.rel='stylesheet';link.href='oba-design-system.css?v=13';link.dataset.obaDesignSystem='true';document.head.appendChild(link);
 }
 function addSimplifiedStyles(){
- if(document.querySelector('link[data-oba-simplified]'))return;
+ if(document.querySelector('link[href*="oba-simplified.css"]'))return;
  const link=document.createElement('link');link.rel='stylesheet';link.href='oba-simplified.css?v=1';link.dataset.obaSimplified='true';document.head.appendChild(link);
 }
 function addFavicon(){if(document.querySelector('link[rel="icon"]'))return;const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link)}
