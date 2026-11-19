@@ -1,52 +1,50 @@
-/* OBA Digital Studio — shared behavior only.
-   Keep navigation, branding, and enquiry actions predictable across pages. */
+/* OBA Digital Studio — shared navigation and direct enquiry actions. */
 (function(){
-  'use strict';
-  const WA='2348123958585';
-  const wa=(message)=>`https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
-  const messages={
-    general:"Hi OBA Digital Studio, I'd like to discuss a digital project. Please guide me on the next steps.",
-    websites:"Hi OBA Digital Studio, I'm interested in website design and development. I'd like to discuss my project.",
-    'ai-automation':"Hi OBA Digital Studio, I'm interested in AI automation for my business. I'd like to know what you can automate for me.",
-    branding:"Hi OBA Digital Studio, I'm interested in branding and visual identity. I'd like to discuss my brand.",
-    'social-media':"Hi OBA Digital Studio, I'm interested in social media management and content systems.",
-    'digital-products':"Hi OBA Digital Studio, I'm interested in your digital products. Please send me the available options.",
-    'digital-strategy':"Hi OBA Digital Studio, I'd like help choosing the right digital strategy or setup for my business.",
-    'chatgpt-prompts':"Hi OBA Digital Studio, I'd like to ask about the ChatGPT Prompt Vault. Please send me the payment and delivery details.",
-    'build-website':"Hi OBA Digital Studio, I'd like to ask about the website guide. Please send me the payment and delivery details.",
-    'social-content':"Hi OBA Digital Studio, I'd like to ask about the Social Content Engine. Please send me the payment and delivery details.",
-    'launch-kit':"Hi OBA Digital Studio, I'd like to ask about the Digital Launch Kit. Please send me the payment and delivery details.",
-    'ai-automation-kit':"Hi OBA Digital Studio, I'd like to ask about the AI Automation Starter Kit. Please send me the payment and delivery details.",
-    'brand-starter':"Hi OBA Digital Studio, I'd like to ask about the Brand Starter System. Please send me the payment and delivery details."
-  };
-  const productLinks={
-    'chatgpt-prompts':'https://selar.com/r49h8528sq',
-    'build-website':'https://selar.com/89p696690n',
-    'social-content':'https://selar.com/gx0w8o1576'
-  };
-  const serviceAliases={'Website Design & Development':'websites','AI Automation':'ai-automation','Branding & Visual Identity':'branding','Social Media Management':'social-media','Digital Product Creation':'digital-products','Digital Strategy & Setup':'digital-strategy'};
-  const getMessage=(key)=>messages[key]||messages.general;
-  const productKey=(value)=>({'ChatGPT Prompt Vault':'chatgpt-prompts','Create Your Own Website in Minutes':'build-website','Social Content Engine':'social-content','Digital Launch Kit':'launch-kit','AI Automation Starter Kit':'ai-automation-kit','Brand Starter System':'brand-starter'}[value]||value||'general');
-  function addStylesheet(){if(!document.querySelector('link[data-oba-unified-style]')){const link=document.createElement('link');link.rel='stylesheet';link.href='oba-unified.css?v=2';link.dataset.obaUnifiedStyle='true';document.head.appendChild(link)}if(!document.querySelector('link[data-oba-final-polish]')){const polish=document.createElement('link');polish.rel='stylesheet';polish.href='oba-final-polish.css?v=1';polish.dataset.obaFinalPolish='true';document.head.appendChild(polish)}if(!document.querySelector('link[data-oba-depth-polish]')){const depth=document.createElement('link');depth.rel='stylesheet';depth.href='oba-depth-polish.css?v=1';depth.dataset.obaDepthPolish='true';document.head.appendChild(depth)}}
-  function addFavicon(){if(document.querySelector('link[rel="icon"]'))return;const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link)}
-  function configureNav(){const menu=document.querySelector('.menu'),nav=document.querySelector('.nav nav');if(!menu||!nav||menu.dataset.obaReady==='true')return;menu.dataset.obaReady='true';menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');menu.textContent=open?'×':'☰'});nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu');menu.textContent='☰'}))}
-  function configureWhatsApp(){document.querySelectorAll('[data-service]').forEach(link=>{const key=serviceAliases[link.dataset.service]||link.dataset.service;link.href=wa(getMessage(key));link.target='_blank';link.rel='noopener'});const main=document.getElementById('wa');if(main){const key=main.dataset.service||'general';main.href=wa(getMessage(key));main.target='_blank';main.rel='noopener'}document.querySelectorAll('[data-wa-message]').forEach(link=>{link.href=wa(link.dataset.waMessage);link.target='_blank';link.rel='noopener'});document.querySelectorAll('.buy-large,[data-product]').forEach(link=>{if(link.dataset.obaBuyReady==='true')return;link.dataset.obaBuyReady='true';link.addEventListener('click',(event)=>{const key=productKey(link.dataset.product||link.dataset.selar||link.closest('.product')?.querySelector('h3')?.textContent?.trim());if(productLinks[key])return;event.preventDefault();window.open(wa(getMessage(key)),'_blank','noopener')})})}
-  function cleanSocialLabels(){document.querySelectorAll('a[href*="tiktok.com"],a[href*="snapchat.com"]').forEach(link=>{const isTikTok=link.href.toLowerCase().includes('tiktok.com');link.textContent=isTikTok?'TikTok':'Snapchat';link.setAttribute('aria-label',isTikTok?'TikTok profile':'Snapchat profile');link.classList.add('oba-social-link');link.target='_blank';link.rel='noopener'})}
-  function hidePhoneText(){const phone=/\+?234[\s-]?812[\s-]?395[\s-]?8585|0812[\s-]?395[\s-]?8585/g;const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{if(phone.test(node.nodeValue))node.nodeValue=node.nodeValue.replace(phone,'');phone.lastIndex=0})}
-  function replaceHomepageWork(){const grid=document.querySelector('#work .work-grid');if(!grid||grid.dataset.obaWorkUpdated==='true')return;grid.dataset.obaWorkUpdated='true';const cards=[['dark','AGRICULTURE / AGRITECH','OBA<br>AGROTECH','Digital platform · Website','case-study-oba-agrotech.html'],['tech','GAMING / ENTERTAINMENT','ABD<br>GAMES','Gaming website · Interactive concept','case-study-abd-games.html'],['gold','TECH / GADGETS',"FREEMAN'S<br>GADGET",'Gadget storefront · E-commerce demo','case-study-freemans-gadget.html'],['pink','FASHION / HANDMADE CRAFT','PERERAT<br><i>CROCHET</i>','Handmade brand · Product showcase','case-study-pererat-crochet.html']];grid.innerHTML=cards.map(([tone,label,title,desc,url])=>`<a class="work-card ${tone}" href="${url}"><div><small>${label}</small><strong>${title}</strong><span>${desc}</span></div><footer>View case study ↗</footer></a>`).join('')}
-  function addDesignSystemLast(){if(document.querySelector('link[data-oba-design-system]'))return;const link=document.createElement('link');link.rel='stylesheet';link.href='oba-design-system.css?v=11';link.dataset.obaDesignSystem='true';document.head.appendChild(link)}
-  function animatePrimaryHeroCta(){const link=document.querySelector('body#top .hero-copy .actions .btn');if(!link||link.dataset.obaAnimated==='true')return;const label=link.textContent.trim();link.dataset.obaAnimated='true';link.setAttribute('aria-label',label);link.textContent='';Array.from(label).forEach((char,index)=>{const span=document.createElement('span');span.className='oba-cta-letter';span.style.setProperty('--letter-index',index);span.setAttribute('aria-hidden','true');span.textContent=char===' '?'\u00a0':char;link.appendChild(span)})}\n  function addFloatingWhatsApp(){
-    document.querySelectorAll('.nav .nav-cta').forEach(link=>link.remove());
-    if(document.querySelector('.oba-floating-whatsapp'))return;
-    const link=document.createElement('a');
-    link.className='oba-floating-whatsapp';
-    link.href=wa(messages.general);
-    link.target='_blank';
-    link.rel='noopener';
-    link.setAttribute('aria-label','Message OBA Digital Studio on WhatsApp');
-    link.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 11.7a8.2 8.2 0 0 1-12.1 7.2L3 20l1.2-4.8a8.2 8.2 0 1 1 16-3.5Z"/><path d="M8.2 8.1c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4 0 .6l-.6.8c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.4 2.3.3.2.5.2.7 0l.9-1c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.1-.7 1.5-.5.5-1.2.7-2 .6-1.2-.2-2.6-.8-4.1-2.2-1.7-1.5-2.5-3.2-2.8-4.3-.2-.8 0-1.5.4-1.8Z"/></svg><span>Message us</span>';
-    document.body.appendChild(link);
-  }
-  function run(){addStylesheet();addDesignSystemLast();addFavicon();configureNav();configureWhatsApp();cleanSocialLabels();hidePhoneText();animatePrimaryHeroCta();addFloatingWhatsApp()}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
+'use strict';
+const WA='2348123958585';
+const wa=(message)=>'https://wa.me/'+WA+'?text='+encodeURIComponent(message);
+const messages={
+ general:"Hi OBA Digital Studio, I'd like to discuss a digital project. Please guide me on the next steps.",
+ websites:"Hi OBA Digital Studio, I'm interested in website and software development. I'd like to discuss what I want to build.",
+ 'ai-automation':"Hi OBA Digital Studio, I'm interested in AI automation. I'd like to explain a workflow or task I want to automate.",
+ 'digital-products':"Hi OBA Digital Studio, I'm interested in creating a digital product from my idea or knowledge. I'd like to discuss the process.",
+ 'digital-strategy':"Hi OBA Digital Studio, I'd like help with my digital strategy. I want to discuss my goals and the right next steps.",
+ 'learning-ai-tools':"Hi OBA Digital Studio, I'm interested in a custom learning format for AI tools. Please tell me how we can arrange it.",
+ 'learning-web-apps':"Hi OBA Digital Studio, I'm interested in custom guidance for learning to build a website, app or software product.",
+ 'learning-digital-products':"Hi OBA Digital Studio, I'd like a custom learning experience on creating and selling digital products. Please share the options."
+};
+const navLinks=[
+ ['Home','index.html'],['Contact',wa(messages.general)],['Privacy','privacy.html'],['Terms','terms.html'],
+ ['About OBA','about.html'],['Why OBA','index.html#why'],['Our Work','work.html'],
+ ['Our Services','services.html'],['OBA Learning Hub / Marketplace','index.html#learn']
+];
+function configureNav(){
+ const menu=document.querySelector('.menu'),nav=document.querySelector('.nav nav');
+ if(!nav)return;
+ nav.innerHTML=navLinks.map(([label,url])=>'<a href="'+url+'"'+(url.startsWith('https://wa.me/')?' target="_blank" rel="noopener"':'')+'>'+label+'</a>').join('');
+ if(menu&&!menu.dataset.obaReady){
+  menu.dataset.obaReady='true';
+  menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');menu.textContent=open?'×':'☰'});
+  nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu');menu.textContent='☰'}));
+ }
+}
+function configureWhatsApp(){
+ document.querySelectorAll('[data-service]').forEach(link=>{
+  const key=link.dataset.service||'general';
+  link.href=wa(messages[key]||messages.general);
+  link.target='_blank';link.rel='noopener';
+ });
+ document.querySelectorAll('[data-wa-message]').forEach(link=>{link.href=wa(link.dataset.waMessage);link.target='_blank';link.rel='noopener'});
+}
+function addDesignSystemLast(){
+ if(document.querySelector('link[data-oba-design-system]'))return;
+ const link=document.createElement('link');link.rel='stylesheet';link.href='oba-design-system.css?v=13';link.dataset.obaDesignSystem='true';document.head.appendChild(link);
+}
+function addSimplifiedStyles(){
+ if(document.querySelector('link[data-oba-simplified]'))return;
+ const link=document.createElement('link');link.rel='stylesheet';link.href='oba-simplified.css?v=1';link.dataset.obaSimplified='true';document.head.appendChild(link);
+}
+function addFavicon(){if(document.querySelector('link[rel="icon"]'))return;const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link)}
+function run(){configureNav();configureWhatsApp();addDesignSystemLast();addSimplifiedStyles();addFavicon()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
