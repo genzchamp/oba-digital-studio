@@ -492,3 +492,29 @@ body,body *{text-shadow:none!important}
   #market .pbody h3{font-size:12px!important}
   #market .pbody p{font-size:9px!important}
 }
+
+
+/* Mobile-first global builder hero artwork */
+@media(max-width:760px){
+  .hero.container{
+    min-height:560px!important;
+    display:flex!important;align-items:flex-start!important;
+    background:
+      linear-gradient(180deg,rgba(7,13,9,.72) 0%,rgba(7,13,9,.58) 42%,rgba(7,13,9,.92) 100%),
+      url("assets/oba-global-builder-mobile.svg") center 38%/cover no-repeat!important;
+    background-color:#101713!important;
+    border-color:#344438!important;
+    color:#f5f7f1!important;
+    box-shadow:0 12px 34px rgba(5,12,7,.18)!important;
+  }
+  .hero-copy{position:relative!important;z-index:1!important}
+  .hero-copy .eyebrow{color:#b6ec78!important;letter-spacing:.14em!important}
+  .hero-copy h1{color:#fff!important;text-shadow:0 2px 18px rgba(0,0,0,.24)!important}
+  .hero-copy h1 em{color:#a7ed5b!important}
+  .hero-copy>p:not(.eyebrow){color:#e0e8df!important;max-width:34ch!important}
+  .hero-copy .btn{background:#a6e95b!important;color:#142015!important;border-color:#a6e95b!important}
+  .hero-copy .under{color:#edf5e8!important}
+}
+@media(max-width:390px){
+  .hero.container{min-height:530px!important}
+}
