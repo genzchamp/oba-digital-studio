@@ -759,3 +759,36 @@ body#top .learning-paths .head>p,
 body#top #work .head>p{
   color:#4e584e!important;
 }
+
+
+/* Readability pass: strengthen the main supporting copy beneath section titles. */
+body#top .section .head>p,
+body#top .free .free-box>div>p:not(.kicker),
+body#top .cta>div:first-child>p,
+body#top .cta>div:first-child>small{
+  color:#354039!important;opacity:1!important;text-shadow:none!important;
+}
+body#top .section.services .head>p,
+body#top .services .head>p{color:#e0e7dd!important}
+body#top .why .head>p{color:#465247!important;max-width:460px!important}
+body#top .free .free-box>div>p:not(.kicker){
+  color:#354034!important;font-size:15px!important;line-height:1.7!important;
+}
+body#top .cta>div:first-child>p{
+  color:#354039!important;font-size:15px!important;line-height:1.7!important;
+}
+body#top .cta>div:first-child>small{color:#59645a!important}
+@media(max-width:760px){
+  body#top .section .head>p,
+  body#top .free .free-box>div>p:not(.kicker),
+  body#top .cta>div:first-child>p{font-size:13.5px!important;line-height:1.65!important}
+}
+
+/* Keep the hero headline in place; vertically balance only its supporting paragraph.
+   The actions remain anchored at the bottom of the hero. */
+@media(min-width:761px){
+  body#top .hero-copy>p:not(.eyebrow){margin-top:auto!important;margin-bottom:0!important}
+}
+@media(max-width:760px){
+  body#top .hero-copy>p:not(.eyebrow){margin-top:auto!important;margin-bottom:0!important}
+}
