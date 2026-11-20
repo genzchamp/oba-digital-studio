@@ -5,7 +5,6 @@
 .brand::before{content:"";display:block;width:46px;height:46px;flex:0 0 46px;background:url("assets/oba-logo.svg") center/contain no-repeat;background-color:rgba(201,255,61,.08);border-radius:50%}
 .brand b,.brand span{display:none}
 .footer .brand::before{width:52px;height:52px;flex-basis:52px}
-.footer::after{content:"TikTok · @oba.digital.studio";display:block;grid-column:1/-1;color:#c9ff3d;font-size:12px;letter-spacing:.4px;margin-top:8px}
 
 /* OBA lime-glow + aubergine direction */
 :root{--oba-lime:#c9ff3d;--oba-lime-soft:#a8df27;--oba-aubergine:#8b5cf6;--oba-aubergine-deep:#24133d}
