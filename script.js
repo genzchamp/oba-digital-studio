@@ -38,11 +38,11 @@ function configureWhatsApp(){
 }
 function addDesignSystemLast(){
  if(document.querySelector('link[href*="oba-design-system.css"]'))return;
- const link=document.createElement('link');link.rel='stylesheet';link.href='oba-design-system.css?v=13';link.dataset.obaDesignSystem='true';document.head.appendChild(link);
+ const link=document.createElement('link');link.rel='stylesheet';link.href='oba-design-system.css?v=14';link.dataset.obaDesignSystem='true';document.head.appendChild(link);
 }
 function addSimplifiedStyles(){
  if(document.querySelector('link[href*="oba-simplified.css"]'))return;
- const link=document.createElement('link');link.rel='stylesheet';link.href='oba-simplified.css?v=1';link.dataset.obaSimplified='true';document.head.appendChild(link);
+ const link=document.createElement('link');link.rel='stylesheet';link.href='oba-simplified.css?v=2';link.dataset.obaSimplified='true';document.head.appendChild(link);
 }
 function addFloatingWhatsApp(){
  if(document.querySelector('.oba-floating-whatsapp'))return;
