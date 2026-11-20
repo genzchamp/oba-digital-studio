@@ -44,7 +44,18 @@ function addSimplifiedStyles(){
  if(document.querySelector('link[href*="oba-simplified.css"]'))return;
  const link=document.createElement('link');link.rel='stylesheet';link.href='oba-simplified.css?v=1';link.dataset.obaSimplified='true';document.head.appendChild(link);
 }
+function addFloatingWhatsApp(){
+ if(document.querySelector('.oba-floating-whatsapp'))return;
+ const link=document.createElement('a');
+ link.className='oba-floating-whatsapp';
+ link.href=wa(messages.general);
+ link.target='_blank';link.rel='noopener';
+ link.setAttribute('aria-label','Message OBA Digital Studio on WhatsApp');
+ link.setAttribute('title','Message OBA on WhatsApp');
+ link.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 11.7a8.2 8.2 0 0 1-12.1 7.2L4 20l1.1-4a8.2 8.2 0 1 1 15.1-4.3Z"/><path d="M8.7 8.2c.2-.4.4-.4.7-.4h.5c.2 0 .3.1.4.4l.7 1.6c.1.2.1.4-.1.6l-.5.6c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .4-.2 1.2-.7 1.6-.5.4-1.1.6-1.8.4-1-.2-2.2-.8-3.5-1.9-1.1-1-1.9-2.3-2.1-3.3-.2-.8.1-1.6.6-2.1Z"/></svg>';
+ document.body.appendChild(link);
+}
 function addFavicon(){if(document.querySelector('link[rel="icon"]'))return;const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link)}
-function run(){configureNav();configureWhatsApp();addDesignSystemLast();addSimplifiedStyles();addFavicon()}
+function run(){configureNav();configureWhatsApp();addDesignSystemLast();addSimplifiedStyles();addFloatingWhatsApp();addFavicon()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
