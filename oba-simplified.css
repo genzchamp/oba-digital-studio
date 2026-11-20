@@ -111,3 +111,12 @@ html body header.nav nav{max-height:calc(100vh - 90px);overflow-y:auto}
 .cta h2,.cta p{color:#202720!important}
 .page-hero h1,.page-hero .lead{color:#f5f7ef!important}
 .page-hero .lead{opacity:1!important}
+
+
+/* Ensure light-section heading words never disappear into the background. */
+.work-preview .head h2,.why .head h2,.learning-hub .hub-intro h2{
+ color:#202720!important;opacity:1!important;
+}
+.work-preview .head h2 em,.why .head h2 em,.learning-hub .hub-intro h2 em{
+ color:#52752b!important;opacity:1!important;
+}
