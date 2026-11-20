@@ -75,3 +75,39 @@ html{scroll-padding-top:90px}
  .portfolio-card p{font-size:10px!important}
  .portfolio-card span{font-size:7px!important}
 }
+
+
+/* OBA refinement: keep navigation accessible and improve readability. */
+html{scroll-padding-top:88px!important}
+html body header.nav{
+ position:sticky!important;position:-webkit-sticky!important;top:0!important;
+ z-index:1000!important;isolation:isolate!important;
+}
+html body header.nav nav{max-height:calc(100vh - 90px);overflow-y:auto}
+.oba-floating-whatsapp{
+ right:18px!important;bottom:18px!important;
+ width:46px!important;height:46px!important;min-height:46px!important;
+ min-width:46px!important;padding:0!important;gap:0!important;
+ border-radius:50%!important;background:#19b95b!important;
+ box-shadow:0 7px 20px rgba(9,90,43,.25),0 2px 7px rgba(0,0,0,.13)!important;
+}
+.oba-floating-whatsapp svg{width:23px!important;height:23px!important;flex:0 0 23px!important}
+@media(max-width:760px){
+ .oba-floating-whatsapp{right:14px!important;bottom:max(14px,env(safe-area-inset-bottom))!important;width:44px!important;height:44px!important;min-height:44px!important;min-width:44px!important}
+}
+
+/* Remove decorative sequence numbers and generic numbered labels. */
+.card-index,.why-grid>div>b,.service-detail>span,.service-list a> b{display:none!important}
+
+/* Strong, predictable contrast for emphasized heading words. */
+.hub-intro h2 em,.head h2 em,.why h2 em,.cta h2 em,
+.service-detail h3 em,.section h2 em{color:#607a2d!important}
+.page-hero h1 em,.hero-copy h1 em{color:#b8ed70!important}
+.services .head h2,.services .head h2 em{color:#f5f7ef!important}
+.services .head h2 em{color:#b8ed70!important}
+.learning-card h3,.service-detail h3,.why-grid h3{color:#202720!important}
+.learning-card>p,.service-detail p,.why-grid p{color:#465247!important;opacity:1!important}
+.hub-intro>p:last-child,.work-preview .head>p,.why .head>p{color:#465247!important;opacity:1!important}
+.cta h2,.cta p{color:#202720!important}
+.page-hero h1,.page-hero .lead{color:#f5f7ef!important}
+.page-hero .lead{opacity:1!important}
