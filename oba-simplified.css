@@ -120,3 +120,33 @@ html body header.nav nav{max-height:calc(100vh - 90px);overflow-y:auto}
 .work-preview .head h2 em,.why .head h2 em,.learning-hub .hub-intro h2 em{
  color:#52752b!important;opacity:1!important;
 }
+
+
+/* Premium continuous marquee — homepage brand signature. */
+.oba-marquee{
+  position:relative!important;width:100%!important;overflow:hidden!important;
+  padding:20px 0!important;background:#202522!important;color:#f3f6ed!important;
+  border-top:1px solid rgba(217,239,120,.18)!important;
+  border-bottom:1px solid rgba(217,239,120,.18)!important;
+}
+.oba-marquee-viewport{width:100%;overflow:hidden}
+.oba-marquee-track{display:flex;width:max-content;align-items:center;animation:oba-marquee-scroll 34s linear infinite}
+.oba-marquee-group{display:flex;flex:0 0 auto;align-items:center;gap:clamp(22px,3.6vw,52px);padding-right:clamp(22px,3.6vw,52px);white-space:nowrap}
+.oba-marquee-group span{
+  font-family:"Space Grotesk","Manrope",sans-serif;font-size:clamp(11px,1.1vw,13px);
+  font-weight:700;letter-spacing:.17em;color:#f0f3eb
+}
+.oba-marquee-group i{font-style:normal;font-size:14px;color:#c6e86a}
+.oba-marquee:hover .oba-marquee-track{animation-play-state:paused}
+@keyframes oba-marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:760px){
+ .oba-marquee{padding:16px 0!important}
+ .oba-marquee-track{animation-duration:27s}
+ .oba-marquee-group{gap:22px;padding-right:22px}
+ .oba-marquee-group span{font-size:10px;letter-spacing:.13em}
+}
+@media(prefers-reduced-motion:reduce){
+ .oba-marquee-viewport{overflow-x:auto}
+ .oba-marquee-track{animation:none!important}
+ .oba-marquee-group[aria-hidden="true"]{display:none}
+}
