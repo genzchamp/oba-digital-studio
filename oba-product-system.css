@@ -117,3 +117,40 @@
   .product-tile-copy{height:66px !important;padding:4px 6px 5px !important}
   .product-tile-copy h2{font-size:10px !important}
 }
+
+
+/* Product detail pages: tighten the hero-to-image and image-to-content spacing on phones. */
+@media(max-width:650px){
+  .product-detail-hero{padding:24px 0 18px !important}
+  .product-detail-hero .product-detail-layout{
+    grid-template-columns:minmax(0,1fr) !important;
+    gap:10px !important;
+    align-items:start !important;
+  }
+  .product-detail-hero h1{font-size:clamp(30px,8vw,42px) !important;margin:8px 0 7px !important}
+  .product-detail-hero .product-tagline{font-size:15px !important;line-height:1.4 !important;margin:0 0 6px !important}
+  .product-detail-hero .product-detail-layout>div>p:last-child{font-size:13px !important;line-height:1.5 !important;margin:0 !important}
+  .product-detail-hero .product-detail-layout>img{
+    display:block !important;
+    width:min(100%,230px) !important;
+    max-width:230px !important;
+    height:145px !important;
+    object-fit:contain !important;
+    margin:0 auto !important;
+    border-radius:14px !important;
+    box-shadow:none !important;
+  }
+  .section.container.product-content-grid{
+    padding-top:22px !important;
+    padding-bottom:28px !important;
+    gap:18px !important;
+  }
+  .product-content-grid h2{font-size:25px !important;line-height:1.2 !important;margin:8px 0 10px !important}
+  .product-content-grid h3{margin:20px 0 8px !important}
+}
+@media(max-width:360px){
+  .product-detail-hero{padding:19px 0 14px !important}
+  .product-detail-hero .product-detail-layout{gap:8px !important}
+  .product-detail-hero .product-detail-layout>img{height:125px !important}
+  .section.container.product-content-grid{padding-top:18px !important}
+}
