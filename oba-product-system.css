@@ -62,3 +62,58 @@
 .product-content-grid h3:before{display:inline-grid;place-items:center;width:25px;height:25px;margin-right:9px;border-radius:50%;background:#eff4e8;color:#718a3d;font-size:13px;vertical-align:middle}
 .product-content-grid h3:nth-of-type(1):before{content:"✧"}.product-content-grid h3:nth-of-type(2):before{content:"◎"}.product-content-grid h3:nth-of-type(3):before{content:"↗"}.product-content-grid h3:nth-of-type(4):before{content:"▤"}
 @media(max-width:650px){.oba-mini-icon{width:17px;height:17px;font-size:10px;margin-right:5px}.knowledge-article h2:before{width:26px;height:26px;font-size:13px;margin-right:7px}}
+
+
+/* Final phone-first catalogue tiles: deliberately short, compact cards in two columns. */
+@media(max-width:650px){
+  .product-catalog{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:8px !important;align-items:start}
+  .product-tile{
+    display:grid !important;
+    grid-template-rows:42px minmax(0,1fr) !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    height:112px !important;
+    min-height:112px !important;
+    max-height:112px !important;
+    overflow:hidden !important;
+    border-radius:10px !important;
+  }
+  .product-tile img{
+    width:100% !important;
+    height:42px !important;
+    min-height:42px !important;
+    max-height:42px !important;
+    object-fit:contain !important;
+    padding:3px 8px !important;
+  }
+  .product-tile-copy{
+    min-height:0 !important;
+    height:70px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:space-between !important;
+    align-items:flex-start !important;
+    gap:2px !important;
+    padding:5px 8px 6px !important;
+    overflow:hidden !important;
+  }
+  .product-tile-copy .product-category,
+  .product-tile-copy p{display:none !important}
+  .product-tile-copy h2{
+    display:-webkit-box !important;
+    -webkit-box-orient:vertical !important;
+    -webkit-line-clamp:2 !important;
+    overflow:hidden !important;
+    font-size:11px !important;
+    line-height:1.15 !important;
+    margin:0 !important;
+    max-height:26px !important;
+  }
+  .product-tile-copy .product-price{font-size:10px !important;line-height:1 !important;margin:0 !important;padding:0 !important}
+  .product-tile-copy .product-explore{font-size:9px !important;line-height:1 !important}
+}
+@media(max-width:360px){
+  .product-tile{height:104px !important;min-height:104px !important;max-height:104px !important;grid-template-rows:38px minmax(0,1fr) !important}
+  .product-tile img{height:38px !important;min-height:38px !important;max-height:38px !important}
+  .product-tile-copy{height:66px !important;padding:4px 6px 5px !important}
+  .product-tile-copy h2{font-size:10px !important}
+}
