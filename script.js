@@ -14,14 +14,21 @@ const messages={
  'learning-digital-products':"Hi OBA Digital Studio, I'd like a custom learning experience on creating and selling digital products. Please share the options."
 };
 const navLinks=[
- ['Home','index.html'],['Contact',wa(messages.general)],['Privacy','privacy.html'],['Terms','terms.html'],
- ['About OBA','about.html'],['Why OBA','index.html#why'],['Our Work','work.html'],
- ['Our Services','services.html'],['OBA Learning Hub / Marketplace','index.html#learn']
+ ['Home','index.html'],
+ ['Digital Services','services.html'],
+ ['Digital Products','products.html'],
+ ['Digital Knowledge','free-lab.html'],
+ ['Digital Innovation','work.html'],
+ ['About OBA','about.html'],
+ ['Contact','contact.html']
 ];
 function configureNav(){
  const menu=document.querySelector('.menu'),nav=document.querySelector('.nav nav');
  if(!nav)return;
- nav.innerHTML=navLinks.map(([label,url])=>'<a href="'+url+'"'+(url.startsWith('https://wa.me/')?' target="_blank" rel="noopener"':'')+'>'+label+'</a>').join('');
+ const current=(location.pathname.split('/').pop()||'index.html');
+ nav.innerHTML=navLinks.map(([label,url])=>{const active=url===current;return '<a href="'+url+'"'+(active?' class="active" aria-current="page"':'')+'>'+label+'</a>'}).join('');
+ let cta=document.querySelector('.nav-cta');
+ if(!cta){cta=document.createElement('a');cta.className='nav-cta';cta.href='contact.html';cta.textContent='Let’s talk';nav.insertAdjacentElement('afterend',cta);}
  if(menu&&!menu.dataset.obaReady){
   menu.dataset.obaReady='true';
   menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');menu.textContent=open?'×':'☰'});
@@ -35,6 +42,10 @@ function configureWhatsApp(){
   link.target='_blank';link.rel='noopener';
  });
  document.querySelectorAll('[data-wa-message]').forEach(link=>{link.href=wa(link.dataset.waMessage);link.target='_blank';link.rel='noopener'});
+}
+function addPageContrast(){
+ if(document.querySelector('link[href*="oba-page-contrast.css"]'))return;
+ const link=document.createElement('link');link.rel='stylesheet';link.href='oba-page-contrast.css?v=1';document.head.appendChild(link);
 }
 function addDesignSystemLast(){
  if(document.querySelector('link[href*="oba-design-system.css"]'))return;
@@ -56,6 +67,6 @@ function addFloatingWhatsApp(){
  document.body.appendChild(link);
 }
 function addFavicon(){if(document.querySelector('link[rel="icon"]'))return;const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link)}
-function run(){configureNav();configureWhatsApp();addDesignSystemLast();addSimplifiedStyles();addFloatingWhatsApp();addFavicon()}
+function run(){configureNav();configureWhatsApp();addPageContrast();addDesignSystemLast();addSimplifiedStyles();addFloatingWhatsApp();addFavicon()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();

@@ -1,0 +1,6 @@
+/* Shared page-hero contrast correction: dark premium surface with readable light text. */
+html body .page-hero{background:linear-gradient(125deg,#101710 0%,#1b281d 58%,#2b3823 100%)!important;color:#f5f7ef!important;border-bottom:1px solid rgba(190,220,120,.18)!important}
+html body .page-hero h1{color:#f5f7ef!important}
+html body .page-hero h1 em{color:#c5e878!important}
+html body .page-hero .lead,html body .page-hero p:not(.eyebrow):not(.kicker){color:#e0e9dc!important;opacity:1!important}
+html body .page-hero .eyebrow,html body .page-hero .kicker{color:#c6e87b!important;opacity:1!important}
