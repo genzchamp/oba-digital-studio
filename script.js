@@ -43,6 +43,10 @@ function configureWhatsApp(){
  });
  document.querySelectorAll('[data-wa-message]').forEach(link=>{link.href=wa(link.dataset.waMessage);link.target='_blank';link.rel='noopener'});
 }
+function addPageContrast(){
+ if(document.querySelector('link[href*="oba-page-contrast.css"]'))return;
+ const link=document.createElement('link');link.rel='stylesheet';link.href='oba-page-contrast.css?v=1';document.head.appendChild(link);
+}
 function addDesignSystemLast(){
  if(document.querySelector('link[href*="oba-design-system.css"]'))return;
  const link=document.createElement('link');link.rel='stylesheet';link.href='oba-design-system.css?v=14';link.dataset.obaDesignSystem='true';document.head.appendChild(link);
@@ -63,6 +67,6 @@ function addFloatingWhatsApp(){
  document.body.appendChild(link);
 }
 function addFavicon(){if(document.querySelector('link[rel="icon"]'))return;const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link)}
-function run(){configureNav();configureWhatsApp();addDesignSystemLast();addSimplifiedStyles();addFloatingWhatsApp();addFavicon()}
+function run(){configureNav();configureWhatsApp();addPageContrast();addDesignSystemLast();addSimplifiedStyles();addFloatingWhatsApp();addFavicon()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
