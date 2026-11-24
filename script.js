@@ -67,6 +67,75 @@ function addFloatingWhatsApp(){
  document.body.appendChild(link);
 }
 function addFavicon(){if(document.querySelector('link[rel="icon"]'))return;const link=document.createElement('link');link.rel='icon';link.type='image/svg+xml';link.href='favicon.svg';document.head.appendChild(link)}
-function run(){configureNav();configureWhatsApp();addPageContrast();addDesignSystemLast();addSimplifiedStyles();addFloatingWhatsApp();addFavicon()}
+function run(){configureNav();configureWhatsApp();addPageContrast();addDesignSystemLast();addSimplifiedStyles();addFloatingWhatsApp();addFavicon();addOBAKineticMotion()}
+/* OBA kinetic identity — animation only; existing page content and structure stay intact. */
+function addOBAKineticMotion(){
+ if(document.documentElement.dataset.obaMotionReady)return;
+ document.documentElement.dataset.obaMotionReady='true';
+ const style=document.createElement('style');
+ style.id='oba-kinetic-motion';
+ style.textContent=`
+ .oba-kinetic-heading{position:relative}
+ .oba-kinetic-heading .oba-letter{display:inline;opacity:0;transition:opacity .08s linear}
+ .oba-kinetic-heading.oba-typing .oba-letter{opacity:1}
+ .oba-kinetic-heading .oba-underline{position:absolute;left:0;bottom:-13px;width:clamp(88px,20%,150px);height:22px;overflow:visible;pointer-events:none;opacity:0}
+ .oba-kinetic-heading.oba-typed .oba-underline{opacity:1}
+ .oba-kinetic-heading .oba-underline path{fill:none;stroke:#a8dc62;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:230;stroke-dashoffset:230}
+ .oba-kinetic-heading.oba-typed .oba-underline path{animation:obaInkDraw .72s cubic-bezier(.5,0,.25,1) forwards}
+ .oba-kinetic-heading .oba-doodle{opacity:0;transform:translate(-7px,4px) scale(.7);transform-origin:center}
+ .oba-kinetic-heading.oba-typed .oba-doodle{animation:obaDoodlePop .4s cubic-bezier(.2,1.5,.5,1) .62s forwards}
+ @keyframes obaInkDraw{to{stroke-dashoffset:0}}
+ @keyframes obaDoodlePop{to{opacity:1;transform:translate(0,0) scale(1)}}
+ .oba-scroll-reveal{opacity:0;transform:translate3d(0,22px,0);transition:opacity .8s ease,transform .85s cubic-bezier(.2,.7,.2,1);transition-delay:var(--oba-motion-delay,0ms)}
+ .oba-scroll-reveal.oba-in-view{opacity:1;transform:translate3d(0,0,0)}
+ @media(max-width:700px){.oba-scroll-reveal{transform:translate3d(0,15px,0)}.oba-kinetic-heading .oba-underline{bottom:-10px;height:18px}}
+ @media(prefers-reduced-motion:reduce){
+  .oba-kinetic-heading .oba-letter{opacity:1!important;transition:none!important}
+  .oba-kinetic-heading .oba-underline{opacity:1}
+  .oba-kinetic-heading .oba-underline path{stroke-dashoffset:0!important;animation:none!important}
+  .oba-kinetic-heading .oba-doodle{opacity:1;transform:none;animation:none!important}
+  .oba-scroll-reveal{opacity:1!important;transform:none!important;transition:none!important}
+ }`;
+ document.head.appendChild(style);
+ const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const skip='header,nav,footer,form,button,input,textarea,select,script,style,.nav,.footer,.oba-floating-whatsapp,[aria-hidden="true"]';
+ const headings=[...document.querySelectorAll('main h1,main h2,main h3,body>h1,body>h2')].filter(h=>!h.closest(skip)&&h.textContent.trim());
+ function addDoodle(){
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('class','oba-underline');svg.setAttribute('viewBox','0 0 155 24');svg.setAttribute('aria-hidden','true');
+  svg.innerHTML='<path d="M2 15 C28 7 51 19 77 13 S119 9 137 13"/><g class="oba-doodle"><path d="M136 15 Q146 23 151 13" fill="none" stroke="#b7ed69" stroke-width="2" stroke-linecap="round"/><ellipse cx="137" cy="12" rx="7" ry="5" fill="#b7ed69" stroke="#17221a" stroke-width="1.2"/><circle cx="132" cy="6" r="3.2" fill="#b7ed69" stroke="#17221a" stroke-width="1.1"/><circle cx="142" cy="6" r="3.2" fill="#b7ed69" stroke="#17221a" stroke-width="1.1"/><circle cx="135" cy="11" r=".9" fill="#17221a"/><circle cx="140" cy="11" r=".9" fill="#17221a"/></g>';
+  return svg;
+ }
+ headings.forEach(h=>{
+  if(h.dataset.obaKinetic)return;h.dataset.obaKinetic='true';h.classList.add('oba-kinetic-heading');
+  const walker=document.createTreeWalker(h,NodeFilter.SHOW_TEXT);
+  const nodes=[];while(walker.nextNode())if(walker.currentNode.textContent.trim())nodes.push(walker.currentNode);
+  let count=0;
+  nodes.forEach(node=>{
+   const frag=document.createDocumentFragment();
+   [...node.textContent].forEach(char=>{
+    const span=document.createElement('span');span.className='oba-letter';span.textContent=char;
+    span.style.transitionDelay=(count*32)+'ms';count++;frag.appendChild(span);
+   });
+   node.parentNode.replaceChild(frag,node);
+  });
+  h.appendChild(addDoodle());h.dataset.obaTypingDuration=Math.min(2400,Math.max(650,count*32+350));
+ });
+ const revealSelector='main section > .container > *,main section > div > *,main article,main .card,main .service-card,main .product-card,main .work-card,main .feature-card,main .resource-card,main p,main li,main figure';
+ const reveals=[...document.querySelectorAll(revealSelector)].filter(el=>!el.closest(skip)&&!el.matches('h1,h2,h3')&&!el.classList.contains('oba-kinetic-heading'));
+ reveals.forEach((el,i)=>{if(el.dataset.obaReveal)return;el.dataset.obaReveal='true';el.classList.add('oba-scroll-reveal');el.style.setProperty('--oba-motion-delay',(i%4)*75+'ms')});
+ if(reduce){headings.forEach(h=>h.classList.add('oba-typing','oba-typed'));reveals.forEach(el=>el.classList.add('oba-in-view'));return}
+ if(!('IntersectionObserver'in window)){headings.forEach(h=>h.classList.add('oba-typing','oba-typed'));reveals.forEach(el=>el.classList.add('oba-in-view'));return}
+ const headingObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(!entry.isIntersecting)return;const h=entry.target;h.classList.add('oba-typing');
+  window.setTimeout(()=>h.classList.add('oba-typed'),Number(h.dataset.obaTypingDuration)||900);headingObserver.unobserve(h);
+ }),{threshold:.45,rootMargin:'0px 0px -6% 0px'});
+ headings.forEach(h=>headingObserver.observe(h));
+ const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting){entry.target.classList.add('oba-in-view');revealObserver.unobserve(entry.target)}
+ }),{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+ reveals.forEach(el=>revealObserver.observe(el));
+}
+
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
