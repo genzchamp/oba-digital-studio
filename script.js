@@ -19,6 +19,7 @@ const navLinks=[
  ['Digital Products','products.html'],
  ['Digital Knowledge','free-lab.html'],
  ['Digital Innovation','work.html'],
+ ['OBA Motion','oba-motion.html'],
  ['About OBA','about.html'],
  ['Contact','contact.html']
 ];
