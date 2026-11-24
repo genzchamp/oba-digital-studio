@@ -139,11 +139,11 @@ function addOBAKineticMotion(){
    const frag=document.createDocumentFragment();
    [...node.textContent].forEach(char=>{
     const span=document.createElement('span');span.className='oba-letter';span.textContent=char;
-    span.style.transitionDelay=(count*88)+'ms';count++;frag.appendChild(span);
+    span.style.transitionDelay=(count*125)+'ms';count++;frag.appendChild(span);
    });
    node.parentNode.replaceChild(frag,node);
   });
-  h.appendChild(addDoodle());h.dataset.obaTypingDuration=Math.min(6200,Math.max(900,count*88+650));
+  h.appendChild(addDoodle());h.dataset.obaTypingDuration=Math.min(10000,Math.max(1200,count*125+750));
  });
  const revealSelector='main section > .container > *,main section > div > *,main article,main .card,main .service-card,main .product-card,main .work-card,main .feature-card,main .resource-card,main p,main li,main figure';
  const reveals=[...document.querySelectorAll(revealSelector)].filter(el=>!el.closest(skip)&&!el.matches('h1,h2,h3')&&!el.classList.contains('oba-kinetic-heading'));
