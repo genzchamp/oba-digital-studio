@@ -103,6 +103,7 @@ function addOBAKineticMotion(){
  .oba-scroll-reveal.oba-in-view{opacity:1;transform:translate3d(0,0,0)}
  @media(max-width:700px){.oba-scroll-reveal{transform:translate3d(0,15px,0)}.oba-kinetic-heading .oba-underline{bottom:-10px;height:18px}}
  @media(prefers-reduced-motion:reduce){
+  .oba-orbit-system *{animation:none!important}
   .oba-kinetic-heading .oba-letter{opacity:1!important;transition:none!important}
   .oba-kinetic-heading .oba-underline{opacity:1}
   .oba-kinetic-heading .oba-underline path{stroke-dashoffset:0!important;animation:none!important}
