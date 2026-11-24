@@ -18,7 +18,7 @@
 /* Kinetic storytelling: type-on headings, hand-drawn underline mascot and scroll reveals. */
 (function(){
  'use strict';
- const page=document.querySelector('.motion-page');
+ const page=document.querySelector('.motion-page')||document.querySelector('.motion-home-feature');
  if(!page)return;
  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const headingSelector='.motion-hero h1,.motion-section-heading h2,.motion-intro h2,.motion-engine-band h2,.motion-future h2,.motion-final-cta h2,.motion-feature h3,.motion-steps h3,.motion-home-copy h2';
@@ -50,7 +50,7 @@
   heading.dataset.obaDuration=String(Math.min(2600,state.count*34+850));
   if(!reduce)heading.classList.add('motion-ready');
  });
- const revealTargets=page.querySelectorAll('.motion-intro-copy p,.motion-section-heading>p,.motion-app-shell,.motion-prototype-note,.motion-feature,.motion-steps article,.engine-copy>p,.engine-copy>a,.engine-stage,.motion-future-copy>p,.motion-roadmap>div,.motion-final-cta .motion-wrap>p,.motion-final-cta .motion-button,.motion-back-link,.motion-home-visual');
+ const revealTargets=page.querySelectorAll('.motion-intro-copy p,.motion-section-heading>p,.motion-app-shell,.motion-prototype-note,.motion-feature,.motion-steps article,.engine-copy>p,.engine-copy>a,.engine-stage,.motion-future-copy>p,.motion-roadmap>div,.motion-final-cta .motion-wrap>p,.motion-final-cta .motion-button,.motion-back-link,.motion-home-copy>p,.motion-home-copy>a,.motion-home-visual');
  revealTargets.forEach((el,index)=>{
   el.classList.add('motion-reveal');
   el.style.setProperty('--oba-reveal-delay',(index%5)*85+'ms');
