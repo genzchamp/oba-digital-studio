@@ -76,7 +76,20 @@ function addOBAKineticMotion(){
  style.id='oba-kinetic-motion';
  style.textContent=`
  .oba-kinetic-heading{position:relative}
- .oba-kinetic-heading .oba-letter{display:inline;opacity:0;transition:opacity .08s linear}
+ .hero .hero-copy h1 .oba-hero-word{display:block;width:max-content;max-width:100%;line-height:.98;letter-spacing:-.055em}
+ .hero .hero-copy h1 .oba-hero-word:nth-child(1){color:#f5f6f1}
+ .hero .hero-copy h1 .oba-hero-word:nth-child(2){color:#b9ed70}
+ .hero .hero-copy h1 .oba-hero-word:nth-child(3){color:#f5f6f1}
+ .hero .hero-copy h1 .oba-hero-word .oba-letter:nth-child(4n+2){color:#c9ed82}
+ .hero .hero-copy h1 .oba-hero-word .oba-letter:nth-child(7n+4){color:#d8c28a}
+ .oba-orbit-system{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;pointer-events:none;opacity:.92}
+ .oba-orbit-system .orbit-a{transform-origin:250px 250px;animation:obaOrbitSpin 28s linear infinite}
+ .oba-orbit-system .orbit-b{transform-origin:250px 250px;animation:obaOrbitSpin 36s linear infinite reverse}
+ .oba-orbit-system .orbit-c{transform-origin:250px 250px;animation:obaOrbitSpin 44s linear infinite}
+ .oba-orbit-system .orbit-glow{animation:obaOrbitPulse 6s ease-in-out infinite alternate}
+ @keyframes obaOrbitSpin{to{transform:rotate(360deg)}}
+ @keyframes obaOrbitPulse{to{opacity:.42;transform:scale(1.08)}}
+ .oba-kinetic-heading .oba-letter{display:inline;opacity:0;transition:opacity .12s linear}
  .oba-kinetic-heading.oba-typing .oba-letter{opacity:1}
  .oba-kinetic-heading .oba-underline{position:absolute;left:0;bottom:-13px;width:clamp(88px,20%,150px);height:22px;overflow:visible;pointer-events:none;opacity:0}
  .oba-kinetic-heading.oba-typed .oba-underline{opacity:1}
@@ -98,6 +111,13 @@ function addOBAKineticMotion(){
  }`;
  document.head.appendChild(style);
  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const heroVisual=document.querySelector('.hero .hero-visual');
+ if(heroVisual&&!heroVisual.querySelector('.oba-orbit-system')){
+  const orbit=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  orbit.setAttribute('class','oba-orbit-system');orbit.setAttribute('viewBox','0 0 500 500');orbit.setAttribute('aria-hidden','true');
+  orbit.innerHTML='<defs><radialGradient id="obaOrbitCore"><stop offset="0" stop-color="#d5f58b" stop-opacity=".3"/><stop offset="1" stop-color="#b9ed70" stop-opacity="0"/></radialGradient></defs><circle class="orbit-glow" cx="250" cy="250" r="105" fill="url(#obaOrbitCore)"/><g class="orbit-a"><ellipse cx="250" cy="250" rx="205" ry="92" fill="none" stroke="#b9ed70" stroke-opacity=".55" stroke-width="1.5"/><circle cx="455" cy="250" r="5" fill="#d8c28a"/><circle cx="45" cy="250" r="3" fill="#b9ed70"/></g><g class="orbit-b" transform="rotate(58 250 250)"><ellipse cx="250" cy="250" rx="185" ry="72" fill="none" stroke="#e7e8dd" stroke-opacity=".42" stroke-width="1.2"/><circle cx="435" cy="250" r="4" fill="#b9ed70"/></g><g class="orbit-c" transform="rotate(-52 250 250)"><ellipse cx="250" cy="250" rx="220" ry="116" fill="none" stroke="#d8c28a" stroke-opacity=".34" stroke-width="1"/><circle cx="470" cy="250" r="3.5" fill="#e6e7dd"/></g>';
+  heroVisual.prepend(orbit);
+ }
  const skip='header,nav,footer,form,button,input,textarea,select,script,style,.nav,.footer,.oba-floating-whatsapp,[aria-hidden="true"]';
  const headings=[...document.querySelectorAll('main h1,main h2,main h3,body>h1,body>h2')].filter(h=>!h.closest(skip)&&h.textContent.trim());
  function addDoodle(){
@@ -108,6 +128,9 @@ function addOBAKineticMotion(){
  }
  headings.forEach(h=>{
   if(h.dataset.obaKinetic)return;h.dataset.obaKinetic='true';h.classList.add('oba-kinetic-heading');
+  if(h.matches('.hero .hero-copy h1')){
+   h.innerHTML='<span class="oba-hero-word">Creativity</span><span class="oba-hero-word">into</span><span class="oba-hero-word">Productivity.</span>';
+  }
   const walker=document.createTreeWalker(h,NodeFilter.SHOW_TEXT);
   const nodes=[];while(walker.nextNode())if(walker.currentNode.textContent.trim())nodes.push(walker.currentNode);
   let count=0;
@@ -115,11 +138,11 @@ function addOBAKineticMotion(){
    const frag=document.createDocumentFragment();
    [...node.textContent].forEach(char=>{
     const span=document.createElement('span');span.className='oba-letter';span.textContent=char;
-    span.style.transitionDelay=(count*32)+'ms';count++;frag.appendChild(span);
+    span.style.transitionDelay=(count*88)+'ms';count++;frag.appendChild(span);
    });
    node.parentNode.replaceChild(frag,node);
   });
-  h.appendChild(addDoodle());h.dataset.obaTypingDuration=Math.min(2400,Math.max(650,count*32+350));
+  h.appendChild(addDoodle());h.dataset.obaTypingDuration=Math.min(6200,Math.max(900,count*88+650));
  });
  const revealSelector='main section > .container > *,main section > div > *,main article,main .card,main .service-card,main .product-card,main .work-card,main .feature-card,main .resource-card,main p,main li,main figure';
  const reveals=[...document.querySelectorAll(revealSelector)].filter(el=>!el.closest(skip)&&!el.matches('h1,h2,h3')&&!el.classList.contains('oba-kinetic-heading'));
