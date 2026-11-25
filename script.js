@@ -83,12 +83,15 @@ function addOBAKineticMotion(){
  .hero .hero-copy h1 .oba-hero-word .oba-letter:nth-child(4n+2){color:#c9ed82}
  .hero .hero-copy h1 .oba-hero-word .oba-letter:nth-child(7n+4){color:#d8c28a}
  .hero.container .hero-visual{display:block!important;position:absolute!important;right:1%!important;top:0!important;width:49%!important;height:100%!important;min-height:0!important;margin:0!important;padding:0!important;z-index:1!important;pointer-events:none!important;overflow:visible!important}.hero.container .hero-visual:before{display:none!important}.hero.container .hero-visual:after{display:none!important}.oba-orbit-system{position:absolute;inset:0;width:100%;height:100%;z-index:2;overflow:visible;pointer-events:none;opacity:.92}@media(max-width:760px){.hero.container .hero-visual{display:block!important;right:-12%!important;top:12%!important;width:100%!important;height:78%!important;min-height:0!important;opacity:.58!important;z-index:1!important}.hero.container .hero-visual .oba-orbit-system{opacity:1}}
- .oba-orbit-system .orbit-a{transform-origin:250px 250px;animation:obaOrbitSpin 28s linear infinite}
- .oba-orbit-system .orbit-b{transform-origin:250px 250px;animation:obaOrbitSpin 36s linear infinite reverse}
- .oba-orbit-system .orbit-c{transform-origin:250px 250px;animation:obaOrbitSpin 44s linear infinite}
+ .oba-orbit-system{perspective:900px;transform-style:preserve-3d;filter:drop-shadow(0 0 8px rgba(185,237,112,.16))}
+ .oba-orbit-system .orbit-a{transform-box:view-box;transform-origin:250px 250px;animation:obaOrbitA 27s linear infinite}
+ .oba-orbit-system .orbit-b{transform-box:view-box;transform-origin:250px 250px;animation:obaOrbitB 34s linear infinite}
+ .oba-orbit-system .orbit-c{transform-box:view-box;transform-origin:250px 250px;animation:obaOrbitC 42s linear infinite}
  .oba-orbit-system .orbit-glow{animation:obaOrbitPulse 6s ease-in-out infinite alternate}
- @keyframes obaOrbitSpin{to{transform:rotate(360deg)}}
- @keyframes obaOrbitPulse{to{opacity:.42;transform:scale(1.08)}}
+ @keyframes obaOrbitA{from{transform:perspective(900px) rotateX(68deg) rotateZ(0deg)}to{transform:perspective(900px) rotateX(68deg) rotateZ(360deg)}}
+ @keyframes obaOrbitB{from{transform:perspective(900px) rotateY(66deg) rotateZ(0deg)}to{transform:perspective(900px) rotateY(66deg) rotateZ(-360deg)}}
+ @keyframes obaOrbitC{from{transform:perspective(900px) rotateX(48deg) rotateY(52deg) rotateZ(0deg)}to{transform:perspective(900px) rotateX(48deg) rotateY(52deg) rotateZ(360deg)}}
+ @keyframes obaOrbitPulse{to{opacity:.48;transform:scale(1.1)}}
  .oba-kinetic-heading .oba-letter{display:inline;opacity:0;transition:opacity .12s linear}
  .oba-kinetic-heading.oba-typing .oba-letter{opacity:1}
  .oba-kinetic-heading .oba-underline{position:absolute;left:0;bottom:-13px;width:clamp(88px,20%,150px);height:22px;overflow:visible;pointer-events:none;opacity:0}
