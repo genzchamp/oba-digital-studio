@@ -82,7 +82,7 @@ function addOBAKineticMotion(){
  .hero .hero-copy h1 .oba-hero-word:nth-child(3){color:#f5f6f1}
  .hero .hero-copy h1 .oba-hero-word .oba-letter:nth-child(4n+2){color:#c9ed82}
  .hero .hero-copy h1 .oba-hero-word .oba-letter:nth-child(7n+4){color:#d8c28a}
- .oba-orbit-system{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;pointer-events:none;opacity:.92}
+ .oba-orbit-system{position:absolute;inset:0;width:100%;height:100%;z-index:2;overflow:visible;pointer-events:none;opacity:.92}
  .oba-orbit-system .orbit-a{transform-origin:250px 250px;animation:obaOrbitSpin 28s linear infinite}
  .oba-orbit-system .orbit-b{transform-origin:250px 250px;animation:obaOrbitSpin 36s linear infinite reverse}
  .oba-orbit-system .orbit-c{transform-origin:250px 250px;animation:obaOrbitSpin 44s linear infinite}
